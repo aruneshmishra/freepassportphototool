@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Free Passport Photo Tool – Create US 2×2 Photos at Home</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://freepassportphototool.com" />
+
+  <!-- Favicon (add /favicon.ico in the repo root) -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+
+  <!-- Basic SEO -->
+  <meta name="description" content="Free passport photo tool to create a 6×4 sheet with six 2×2 US-style passport photos. Upload, align your face, and download a printable PNG. Your photo never leaves your device." />
+  <meta name="keywords" content="free passport photo tool, passport photo generator, US passport photo, 2x2 photo, 6x4 photo sheet, print passport photo at home, passport photo maker" />
+  <meta name="author" content="Arunesh Mishra" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Free Passport Photo Tool – Create US 2×2 Photos at Home" />
+  <meta property="og:description" content="Generate US-style 2×2 passport photos on a 6×4 sheet. No upload to server – everything stays in your browser." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://freepassportphototool.com" />
+  <meta property="og:image" content="https://freepassportphototool.com/preview.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Free Passport Photo Tool – Create US 2×2 Photos at Home" />
+  <meta name="twitter:description" content="Create and print US-style passport photos at home on a 6×4 sheet. Your photo never leaves your device." />
+  <meta name="twitter:image" content="https://freepassportphototool.com/preview.png" />
+
+  <!-- JSON-LD WebApplication schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "Free Passport Photo Tool",
+    "url": "https://freepassportphototool.com",
+    "applicationCategory": "PhotoEditingApplication",
+    "operatingSystem": "All",
+    "description": "Generate a 6×4 sheet with six 2×2 US-style passport photos directly in your browser. No upload or server storage.",
+    "creator": {
+      "@type": "Person",
+      "name": "Arunesh Mishra"
+    },
+    "browserRequirements": "Requires HTML5 Canvas and modern browser"
+  }
+  </script>
+
+  <style>
+    :root {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      color-scheme: light dark;
+      --bg-page: #f3f4f6;
+      --bg-card: #ffffff;
+      --bg-panel: #f9fafb;
+      --border-subtle: #e5e7eb;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --accent: #2563eb;
+      --badge-bg: #e0f2fe;
+      --badge-text: #0369a1;
+      --danger-bg: #fff7ed;
+      --danger-border: #fed7aa;
+      --danger-text: #7c2d12;
+      --step-active-bg: #2563eb;
+      --step-active-text: #ffffff;
+    }
+
+    body.dark {
+      --bg-page: #020617;
+      --bg-card: #020617;
+      --bg-panel: #020617;
+      --border-subtle: #1f2937;
+      --text-main: #e5e7eb;
+      --text-muted: #9ca3af;
+      --accent: #3b82f6;
+      --badge-bg: rgba(59,130,246,0.15);
+      --badge-text: #bfdbfe;
+      --danger-bg: #451a03;
+      --danger-border: #9a3412;
+      --danger-text: #fed7aa;
+      --step-active-bg: #3b82f6;
+      --step-active-text: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      padding: 1rem;
+      display: flex;
+      justify-content: center;
+      background: var(--bg-page);
+      color: var(--text-main);
+      overflow-x: hidden;
+    }
+
+    .app {
+      background: var(--bg-card);
+      width: 100%;
+      max-width: 960px;
+      padding: 1.25rem;
+      border-radius: 1rem;
+      box-shadow: 0 10px 30px rgba(15,23,42,0.25);
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 1.25rem;
+    }
+
+    .header-main {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .header h1 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin: 0;
+      color: var(--text-main);
+    }
+
+    .header p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin: 0.5rem 0 0 0;
+    }
+
+    .header-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.5rem;
+      flex-shrink: 0;
+    }
+
+    .toggle-btn {
+      border-radius: 999px;
+      padding: 0.35rem 0.9rem;
+      border: 1px solid var(--border-subtle);
+      background: transparent;
+      color: var(--text-main);
+      cursor: pointer;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .toggle-btn span.icon {
+      font-size: 0.9rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 800px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+      .header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .header-actions {
+        align-items: flex-start;
+      }
+    }
+
+    .panel {
+      border: 1px solid var(--border-subtle);
+      padding: 0.9rem;
+      border-radius: 0.75rem;
+      background: var(--bg-panel);
+      box-sizing: border-box;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .panel-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .badge {
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      padding: 0.15rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.75rem;
+    }
+
+    .hint {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    #previewCanvas {
+      border: 2px dashed var(--border-subtle);
+      background: #ffffff;
+      border-radius: 0.5rem;
+      cursor: grab;
+      touch-action: none;
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    #previewCanvas.dragging {
+      cursor: grabbing;
+    }
+
+    #sheetCanvas {
+      border: 1px solid var(--border-subtle);
+      border-radius: 0.5rem;
+      max-width: 100%;
+      height: auto;
+      background: #f3f4f6;
+      display: block;
+    }
+
+    .btn-row {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+    }
+
+    .btn {
+      border-radius: 999px;
+      padding: 0.5rem 1rem;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #f9fafb;
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text-main);
+      border: 1px solid var(--border-subtle);
+    }
+
+    .btn:disabled {
+      background: #9ca3af;
+      color: #e5e7eb;
+      border-color: #9ca3af;
+      cursor: not-allowed;
+    }
+
+    .zoom-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .zoom-row span.label {
+      white-space: nowrap;
+      color: var(--text-muted);
+    }
+
+    .zoom-desktop {
+      flex: 1;
+      display: flex;
+      align-items: center;
+    }
+
+    .zoom-desktop input[type="range"] {
+      flex: 1;
+      width: 100%;
+      accent-color: var(--accent);
+    }
+
+    .zoom-mobile {
+      display: none;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .zoom-mobile button {
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      padding: 0.25rem 0.6rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .zoom-mobile span#zoomDisplay {
+      min-width: 2.7rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    @media (max-width: 640px) {
+      .zoom-desktop {
+        display: none;
+      }
+      .zoom-mobile {
+        display: inline-flex;
+      }
+    }
+
+    @media (min-width: 641px) {
+      .zoom-mobile {
+        display: none;
+      }
+      .zoom-desktop {
+        display: flex;
+      }
+    }
+
+    .position-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .position-row span.label {
+      white-space: nowrap;
+      color: var(--text-muted);
+    }
+
+    .joystick {
+      display: inline-grid;
+      grid-template-columns: repeat(3, auto);
+      grid-template-rows: repeat(3, auto);
+      gap: 2px;
+      align-items: center;
+      justify-content: center;
+      padding: 0.15rem;
+      border-radius: 0.5rem;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+    }
+
+    .joystick button {
+      border: none;
+      background: transparent;
+      padding: 0.15rem 0.3rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .joystick button:active {
+      color: var(--accent);
+    }
+
+    .joystick button.empty {
+      cursor: default;
+      opacity: 0;
+    }
+
+    .howto {
+      margin-top: 1.5rem;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .howto h2 {
+      font-size: 0.95rem;
+      margin: 0 0 0.25rem 0;
+      color: var(--text-main);
+    }
+
+    .howto ol {
+      margin: 0.25rem 0 0.75rem 1.1rem;
+      padding: 0;
+    }
+
+    .howto li {
+      margin-bottom: 0.25rem;
+    }
+
+    .donate {
+      margin-top: 1.25rem;
+      text-align: right;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .donate a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .donate a:hover {
+      text-decoration: underline;
+    }
+
+    .disclaimer {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: var(--danger-bg);
+      border: 1px solid var(--danger-border);
+      border-radius: 0.75rem;
+      color: var(--danger-text);
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+
+    .step-guide {
+      position: fixed;
+      left: 0;
+      right: 0;
+      bottom: 0.5rem;
+      margin: 0 auto;
+      max-width: 480px;
+      background: rgba(15,23,42,0.9);
+      color: #e5e7eb;
+      border-radius: 999px;
+      padding: 0.4rem 0.9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      z-index: 40;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 25px rgba(15,23,42,0.35);
+      animation: floatUp 0.6s ease-out;
+    }
+
+    .step-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      cursor: pointer;
+      transition: transform 0.15s ease, opacity 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+      opacity: 0.75;
+      padding: 0.1rem 0.5rem;
+      border-radius: 999px;
+    }
+
+    .step-item.active {
+      opacity: 1;
+      transform: scale(1.04);
+      background: var(--step-active-bg);
+    }
+
+    .step-item.active .step-text,
+    .step-item.active .step-label {
+      color: var(--step-active-text);
+    }
+
+    .step-label {
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-size: 0.65rem;
+      opacity: 0.9;
+    }
+
+    .step-text {
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .step-separator {
+      opacity: 0.6;
+      font-size: 0.9rem;
+    }
+
+    @media (min-width: 900px) {
+      .step-guide {
+        display: none;
+      }
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(12px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-main">
+      <h1>Free Passport Photo Tool</h1>
+      <div style="margin-top:0.35rem; display:inline-flex; align-items:center; gap:0.4rem; font-size:0.8rem;">
+        <span style="padding:0.15rem 0.55rem; border-radius:999px; border:1px solid rgba(37,99,235,0.3); color:#2563eb; background:rgba(219,234,254,0.6);">
+          2-step · 2-click process
+        </span>
+      </div>
+      <p>
+        Create a printable 6×4 sheet with six US-style 2×2 passport photos directly in your browser.
+        <strong>Your photo stays safely on your device</strong> — it is not sent to any server,
+        stored online, or used for any other purpose.
+      </p>
+    </div>
+    <div class="header-actions">
+      <button id="themeToggle" class="toggle-btn" type="button">
+        <span class="icon" id="themeIcon">🌙</span>
+        <span id="themeLabel">Dark mode</span>
+      </button>
+      <small style="font-size:0.75rem; color:var(--text-muted); text-align:right;">
+        Your photo will not be transferred to any server or saved anywhere online.
+      </small>
+    </div>
+  </div>
+
+  <div class="grid">
+    <!-- LEFT: EDITOR -->
+    <div class="panel" id="step1">
+      <div class="panel-header">
+        <div class="panel-title">Step 1: Upload &amp; Align</div>
+        <div class="badge">Editor</div>
+      </div>
+
+      <input id="fileInput" type="file" accept="image/*" />
+
+      <p class="hint" style="margin-top:0.75rem;">
+        Choose a photo with a white background using the button above, then use zoom &amp; positioning controls to align the top of your forehead and bottom of your chin to the markers. These guides will not appear on the final sheet.
+      </p>
+
+      <div style="margin-top:0.75rem;">
+        <label style="font-size:0.85rem;">
+          <input type="checkbox" id="bgToggle" />
+          Clean background to white (for better results use a photo with a white background).
+        </label>
+      </div>
+
+      <!-- Zoom + joystick controls -->
+      <div class="zoom-row">
+        <span class="label">Zoom:</span>
+        <div class="zoom-desktop">
+          <input id="zoomRange" type="range" min="1" max="3" step="0.02" value="1" disabled />
+        </div>
+        <div class="zoom-mobile">
+          <button type="button" id="zoomOutBtn">−</button>
+          <span id="zoomDisplay">1.0×</span>
+          <button type="button" id="zoomInBtn">+</button>
+        </div>
+      </div>
+
+      <div class="position-row">
+        <span class="label">Position:</span>
+        <div class="joystick" aria-label="Nudge image">
+          <button class="empty" disabled></button>
+          <button type="button" class="joy-btn" data-dx="0" data-dy="-10">▲</button>
+          <button class="empty" disabled></button>
+
+          <button type="button" class="joy-btn" data-dx="-10" data-dy="0">◀</button>
+          <button class="empty" disabled></button>
+          <button type="button" class="joy-btn" data-dx="10" data-dy="0">▶</button>
+
+          <button class="empty" disabled></button>
+          <button type="button" class="joy-btn" data-dx="0" data-dy="10">▼</button>
+          <button class="empty" disabled></button>
+        </div>
+      </div>
+
+      <div style="margin-top:0.75rem; display:flex; justify-content:center;">
+        <canvas id="previewCanvas" width="600" height="600"></canvas>
+      </div>
+
+      <div class="btn-row" style="margin-top:0.75rem;">
+        <button id="resetBtn" class="btn btn-secondary" type="button" disabled>⟳ Reset / Auto-fit</button>
+      </div>
+    </div>
+
+    <!-- RIGHT: SHEET -->
+    <div class="panel" id="step2">
+      <div class="panel-header">
+        <div class="panel-title">Step 2: Download 6×4 Sheet to print</div>
+        <div class="badge">Output</div>
+      </div>
+
+      <div class="btn-row">
+        <button id="downloadBtn" class="btn btn-secondary" type="button" disabled>⬇️ Download PNG</button>
+      </div>
+
+      <canvas id="sheetCanvas" width="1800" height="1200" style="margin-top:0.75rem;"></canvas>
+
+      <div class="btn-row" style="margin-top:0.5rem;">
+        <button id="clearBtn" class="btn btn-secondary" type="button">🧹 Clear photo from tool  (not required)</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Minimal How-to section -->
+  <div class="howto">
+    <h2>How to use this free US passport photo tool</h2>
+    <ol>
+      <li>Take a clear, high-resolution photo against a plain white background.</li>
+      <li>Upload the photo, then use zoom and positioning to align your forehead and chin with the guide bars.</li>
+      <li>Optionally clean the background to white; the 6×4 sheet updates automatically.</li>
+      <li>Download the PNG file and print it on 6×4 inch photo paper at 100% / actual size.</li>
+    </ol>
+
+    <h2>How to print the 6×4 passport photo sheet</h2>
+    <ol>
+      <li>Select <strong>4×6 inch</strong> paper size in your printer settings.</li>
+      <li>Turn off “Fit to page” or scaling and use <strong>Actual size</strong>.</li>
+      <li>Use photo paper and the highest quality print mode your printer supports.</li>
+      <li>Cut along the thin borders to get six 2×2 inch photos.</li>
+    </ol>
+  </div>
+
+  <div class="donate">
+    If this tool helps you, consider <a href="https://www.buymeacoffee.com/helpingfriend" target="_blank" rel="noopener noreferrer">supporting the creator</a>.
+  </div>
+
+  <div class="disclaimer">
+    <strong>Disclaimer:</strong> This tool is a personal utility created with the best effort to approximate
+    U.S. passport photo guidelines, but there is <strong>no guarantee of accuracy, compliance, or acceptance</strong>
+    by any government agency. Use this tool entirely at your own risk. For official purposes, it is strongly recommended
+    to have your passport photo taken by a professional photographer or an authorized passport photo service.
+    The creator makes <strong>no claims, recommendations, warranties, or assurances</strong> regarding fitness for
+    any official or legal use.
+  </div>
+
+  <div class="step-guide">
+    <div class="step-item active" id="stepGuide1">
+      <span class="step-label">Step 1</span>
+      <span class="step-text">Upload &amp; Align</span>
+    </div>
+    <div class="step-separator">›</div>
+    <div class="step-item" id="stepGuide2">
+      <span class="step-label">Step 2</span>
+      <span class="step-text">Download 6×4 Sheet</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  // Canvas + state
+  const W = 600, H = 600;
+  const SHEET_W = 1800, SHEET_H = 1200;
+  const TILE = 600;
+  const BG_TOLER = 80;
+
+  const fileInput = document.getElementById('fileInput');
+  const previewCanvas = document.getElementById('previewCanvas');
+  const pctx = previewCanvas.getContext('2d');
+  const sheetCanvas = document.getElementById('sheetCanvas');
+  const sctx = sheetCanvas.getContext('2d');
+
+  const zoomRange = document.getElementById('zoomRange');
+  const zoomOutBtn = document.getElementById('zoomOutBtn');
+  const zoomInBtn = document.getElementById('zoomInBtn');
+  const zoomDisplay = document.getElementById('zoomDisplay');
+
+  const bgToggle = document.getElementById('bgToggle');
+  const downloadBtn = document.getElementById('downloadBtn');
+  const resetBtn = document.getElementById('resetBtn');
+  const clearBtn = document.getElementById('clearBtn');
+
+  const themeToggle = document.getElementById('themeToggle');
+  const themeIcon = document.getElementById('themeIcon');
+  const themeLabel = document.getElementById('themeLabel');
+
+  const step1Panel = document.getElementById('step1');
+  const step2Panel = document.getElementById('step2');
+  const stepGuide1 = document.getElementById('stepGuide1');
+  const stepGuide2 = document.getElementById('stepGuide2');
+
+  const joystickButtons = document.querySelectorAll('.joy-btn');
+
+  // Offscreen base canvas WITHOUT guides (used for sheet export)
+  const baseCanvas = document.createElement('canvas');
+  baseCanvas.width = W;
+  baseCanvas.height = H;
+  const bctx = baseCanvas.getContext('2d');
+
+  let img = new Image();
+  let loaded = false;
+  let scale = 1;
+  let offX = 0, offY = 0;
+  let dragging = false, lastX = 0, lastY = 0;
+  let cleanBG = false, bgColor = null;
+  let lastSheetDataUrl = null;
+
+  // Pinch-zoom state
+  let pinchActive = false;
+  let pinchStartDist = 0;
+  let pinchStartScale = 1;
+  let pinchCenterX = 0;
+  let pinchCenterY = 0;
+  let offXAtPinch = 0;
+  let offYAtPinch = 0;
+
+  // Theme handling
+  function applyThemeFromStorage() {
+    const saved = localStorage.getItem('pps-theme');
+    if (saved === 'dark') {
+      document.body.classList.add('dark');
+      themeIcon.textContent = '☀️';
+      themeLabel.textContent = 'Light mode';
+    } else {
+      document.body.classList.remove('dark');
+      themeIcon.textContent = '🌙';
+      themeLabel.textContent = 'Dark mode';
+    }
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const isDark = document.body.classList.toggle('dark');
+    localStorage.setItem('pps-theme', isDark ? 'dark' : 'light');
+    applyThemeFromStorage();
+  });
+
+  applyThemeFromStorage();
+
+  // File upload
+  fileInput.addEventListener('change', e => {
+    const f = e.target.files[0];
+    if (!f) return;
+    const r = new FileReader();
+    r.onload = ev => {
+      img = new Image();
+      img.onload = () => {
+        loaded = true;
+        autoFitImage();
+        bgColor = null;
+        cleanBG = bgToggle.checked;
+        resetBtn.disabled = false;
+        setZoomDisplay();
+        draw(true);
+      };
+      img.src = ev.target.result;
+    };
+    r.readAsDataURL(f);
+  });
+
+  // Auto-fit: always start at scale 1× and center image
+  function autoFitImage() {
+    if (!loaded) return;
+    scale = 1; // initial and minimum zoom is always 1×
+    zoomRange.min = 1;
+    zoomRange.max = 3;
+    zoomRange.step = 0.02;
+    zoomRange.value = scale;
+    zoomRange.disabled = false;
+    if (zoomOutBtn && zoomInBtn) {
+      zoomOutBtn.disabled = false;
+      zoomInBtn.disabled = false;
+    }
+
+    const iw = img.width * scale;
+    const ih = img.height * scale;
+
+    // center image in canvas
+    offX = (W - iw) / 2;
+    offY = (H - ih) / 2;
+  }
+
+  function setZoomDisplay() {
+    if (!zoomDisplay) return;
+    zoomDisplay.textContent = scale.toFixed(2).replace(/\.00$/, '') + '×';
+  }
+
+  // Helpers for touch/canvas mapping
+  function getCanvasPointFromClient(clientX, clientY) {
+    const rect = previewCanvas.getBoundingClientRect();
+    const x = (clientX - rect.left) * (W / rect.width);
+    const y = (clientY - rect.top) * (H / rect.height);
+    return { x, y };
+  }
+
+  function getCanvasCoords(evt) {
+    const rect = previewCanvas.getBoundingClientRect();
+    let clientX, clientY;
+    if (evt.touches && evt.touches.length) {
+      clientX = evt.touches[0].clientX;
+      clientY = evt.touches[0].clientY;
+    } else {
+      clientX = evt.clientX;
+      clientY = evt.clientY;
+    }
+    const x = (clientX - rect.left) * (W / rect.width);
+    const y = (clientY - rect.top) * (H / rect.height);
+    return { x, y };
+  }
+
+  function applyZoom(newScale, centerX = W / 2, centerY = H / 2, fromScale = scale, fromOffX = offX, fromOffY = offY) {
+    if (!loaded) return;
+    newScale = Math.min(3, Math.max(1, newScale)); // clamp 1–3
+
+    // World coords of the zoom center before zoom
+    const px = (centerX - fromOffX) / fromScale;
+    const py = (centerY - fromOffY) / fromScale;
+
+    scale = newScale;
+    zoomRange.value = scale;
+    setZoomDisplay();
+
+    // Reposition so that the same point stays under the same screen position
+    offX = centerX - px * scale;
+    offY = centerY - py * scale;
+
+    draw();
+  }
+
+  // Zoom slider
+  zoomRange.addEventListener('input', () => {
+    if (!loaded) return;
+    const ns = parseFloat(zoomRange.value);
+    applyZoom(ns);
+  });
+
+  // Zoom buttons (mobile)
+  if (zoomOutBtn && zoomInBtn) {
+    zoomOutBtn.addEventListener('click', () => {
+      if (!loaded) return;
+      const current = parseFloat(zoomRange.value || scale);
+      applyZoom(current - 0.08);
+    });
+    zoomInBtn.addEventListener('click', () => {
+      if (!loaded) return;
+      const current = parseFloat(zoomRange.value || scale);
+      applyZoom(current + 0.08);
+    });
+  }
+
+  // Mouse drag
+  previewCanvas.addEventListener('mousedown', e => {
+    if (!loaded) return;
+    const pos = getCanvasCoords(e);
+    dragging = true;
+    lastX = pos.x;
+    lastY = pos.y;
+    previewCanvas.classList.add('dragging');
+  });
+
+  previewCanvas.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    const pos = getCanvasCoords(e);
+    offX += pos.x - lastX;
+    offY += pos.y - lastY;
+    lastX = pos.x;
+    lastY = pos.y;
+    draw();
+  });
+
+  previewCanvas.addEventListener('mouseup', () => {
+    dragging = false;
+    previewCanvas.classList.remove('dragging');
+  });
+
+  previewCanvas.addEventListener('mouseleave', () => {
+    dragging = false;
+    previewCanvas.classList.remove('dragging');
+  });
+
+  // Touch: drag + pinch-zoom
+  previewCanvas.addEventListener('touchstart', e => {
+    if (!loaded) return;
+    e.preventDefault();
+
+    if (e.touches.length === 2) {
+      // Start pinch
+      pinchActive = true;
+      dragging = false;
+      previewCanvas.classList.remove('dragging');
+
+      const t1 = e.touches[0];
+      const t2 = e.touches[1];
+      const dx = t2.clientX - t1.clientX;
+      const dy = t2.clientY - t1.clientY;
+      pinchStartDist = Math.sqrt(dx * dx + dy * dy) || 1;
+      pinchStartScale = scale;
+
+      // Pinch center in canvas coords
+      const cxClient = (t1.clientX + t2.clientX) / 2;
+      const cyClient = (t1.clientY + t2.clientY) / 2;
+      const p = getCanvasPointFromClient(cxClient, cyClient);
+      pinchCenterX = p.x;
+      pinchCenterY = p.y;
+
+      offXAtPinch = offX;
+      offYAtPinch = offY;
+    } else if (e.touches.length === 1) {
+      // Single-finger drag
+      pinchActive = false;
+      const pos = getCanvasCoords(e);
+      dragging = true;
+      lastX = pos.x;
+      lastY = pos.y;
+      previewCanvas.classList.add('dragging');
+    }
+  }, { passive: false });
+
+  previewCanvas.addEventListener('touchmove', e => {
+    if (!loaded) return;
+    e.preventDefault();
+
+    if (pinchActive && e.touches.length === 2) {
+      // Pinch zoom
+      const t1 = e.touches[0];
+      const t2 = e.touches[1];
+      const dx = t2.clientX - t1.clientX;
+      const dy = t2.clientY - t1.clientY;
+      const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+      const factor = dist / pinchStartDist;
+      const newScale = pinchStartScale * factor;
+      applyZoom(newScale, pinchCenterX, pinchCenterY, pinchStartScale, offXAtPinch, offYAtPinch);
+    } else if (!pinchActive && e.touches.length === 1 && dragging) {
+      // Single-finger drag
+      const pos = getCanvasCoords(e);
+      offX += pos.x - lastX;
+      offY += pos.y - lastY;
+      lastX = pos.x;
+      lastY = pos.y;
+      draw();
+    }
+  }, { passive: false });
+
+  previewCanvas.addEventListener('touchend', e => {
+    if (e.touches.length < 2) {
+      pinchActive = false;
+    }
+    if (e.touches.length === 0) {
+      dragging = false;
+      previewCanvas.classList.remove('dragging');
+    }
+  });
+
+  // Joystick nudge
+  joystickButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!loaded) return;
+      const dx = parseFloat(btn.dataset.dx || '0');
+      const dy = parseFloat(btn.dataset.dy || '0');
+      offX += dx;
+      offY += dy;
+      draw();
+    });
+  });
+
+  // Reset
+  resetBtn.addEventListener('click', () => {
+    if (!loaded) return;
+    autoFitImage();
+    setZoomDisplay();
+    draw(true);
+  });
+
+  // Background toggle
+  bgToggle.addEventListener('change', () => {
+    cleanBG = bgToggle.checked;
+    bgColor = null;
+    draw(true);
+  });
+
+  // Clear photo from tool
+  clearBtn.addEventListener('click', () => {
+    img = new Image();
+    loaded = false;
+    scale = 1;
+    offX = 0;
+    offY = 0;
+    cleanBG = false;
+    bgColor = null;
+    lastSheetDataUrl = null;
+    bgToggle.checked = false;
+    zoomRange.value = 1;
+    zoomRange.disabled = true;
+    resetBtn.disabled = true;
+    downloadBtn.disabled = true;
+    if (zoomOutBtn && zoomInBtn) {
+      zoomOutBtn.disabled = true;
+      zoomInBtn.disabled = true;
+    }
+    setZoomDisplay();
+
+    // Clear canvases
+    bctx.clearRect(0, 0, W, H);
+    pctx.clearRect(0, 0, W, H);
+    sctx.clearRect(0, 0, SHEET_W, SHEET_H);
+
+    draw();
+  });
+
+  // Core draw: into baseCanvas, then preview, then auto-generate sheet
+  function draw(recalcBG = false) {
+    // Base canvas
+    bctx.clearRect(0, 0, W, H);
+    bctx.fillStyle = '#ffffff';
+    bctx.fillRect(0, 0, W, H);
+
+    if (loaded) {
+      let iw = img.width * scale;
+      let ih = img.height * scale;
+
+      if (iw <= W) {
+        offX = (W - iw) / 2;
+      } else {
+        offX = Math.min(0, Math.max(offX, W - iw));
+      }
+
+      if (ih <= H) {
+        offY = (H - ih) / 2;
+      } else {
+        offY = Math.min(0, Math.max(offY, H - ih));
+      }
+
+      bctx.drawImage(img, offX, offY, iw, ih);
+
+      if (cleanBG) {
+        if (recalcBG || !bgColor) estimateBG();
+        whitenBG();
+      }
+    }
+
+    // Show base on preview and draw guides
+    pctx.clearRect(0, 0, W, H);
+    pctx.drawImage(baseCanvas, 0, 0);
+    drawGuides();
+
+    // Auto-generate sheet if loaded, else clear
+    if (loaded) {
+      generateSheetFromBase();
+    } else {
+      sctx.clearRect(0, 0, SHEET_W, SHEET_H);
+      downloadBtn.disabled = true;
+      lastSheetDataUrl = null;
+    }
+  }
+
+  // Estimate background from top band
+  function estimateBG() {
+    const id = bctx.getImageData(0, 0, W, H);
+    const d = id.data;
+    const top = H * 0.2;
+    let rs = 0, gs = 0, bs = 0, c = 0;
+    for (let y = 0; y < top; y++) {
+      for (let x = 0; x < W; x++) {
+        const i = (y * W + x) * 4;
+        const r = d[i], g = d[i + 1], b = d[i + 2];
+        if ((r + g + b) / 3 < 120) continue;
+        rs += r; gs += g; bs += b; c++;
+      }
+    }
+    if (c > 0) bgColor = { r: rs / c, g: gs / c, b: bs / c };
+    else bgColor = null;
+  }
+
+  function whitenBG() {
+    if (!bgColor) return;
+    const id = bctx.getImageData(0, 0, W, H);
+    const d = id.data;
+    for (let i = 0; i < d.length; i += 4) {
+      const r = d[i], g = d[i + 1], b = d[i + 2];
+      const diff = Math.abs(r - bgColor.r) + Math.abs(g - bgColor.g) + Math.abs(b - bgColor.b);
+      if (diff < BG_TOLER) {
+        d[i] = d[i + 1] = d[i + 2] = 255;
+      }
+    }
+    bctx.putImageData(id, 0, 0);
+  }
+
+  // Guides only in preview
+  function drawGuides() {
+    const cx = W / 2;
+    const cy = H / 2;
+
+    const boxWidth = 260;
+    const boxHeight = 22;
+
+    const foreheadTop = cy - 220;
+    const foreheadLeft = cx - boxWidth / 2;
+
+    const chinTop = cy + 130;
+    const chinLeft = foreheadLeft;
+
+    pctx.save();
+    pctx.strokeStyle = 'rgba(37,99,235,0.98)';
+    pctx.lineWidth = 2.2;
+    pctx.setLineDash([6, 4]);
+
+    pctx.strokeRect(foreheadLeft, foreheadTop, boxWidth, boxHeight);
+    pctx.strokeRect(chinLeft, chinTop, boxWidth, boxHeight);
+
+    pctx.setLineDash([]);
+
+    pctx.fillStyle = 'rgba(37,99,235,0.98)';
+    const labelFontSize = (window.innerWidth && window.innerWidth < 480) ? 14 : 12;
+    pctx.font = labelFontSize + "px system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
+    pctx.fillText("Align top of forehead", foreheadLeft + 4, foreheadTop - 6);
+    pctx.fillText("Align bottom of your chin", chinLeft + 4, chinTop + boxHeight + 16);
+
+    const plusSize = 32;
+    pctx.lineWidth = 2.4;
+    pctx.beginPath();
+    pctx.moveTo(cx - plusSize, cy);
+    pctx.lineTo(cx + plusSize, cy);
+    pctx.moveTo(cx, cy - plusSize);
+    pctx.lineTo(cx, cy + plusSize);
+    pctx.stroke();
+
+    pctx.restore();
+  }
+
+  // Build 6×4 sheet from base canvas
+  function generateSheetFromBase() {
+    sctx.fillStyle = '#ffffff';
+    sctx.fillRect(0, 0, SHEET_W, SHEET_H);
+
+    for (let r = 0; r < 2; r++) {
+      for (let c = 0; c < 3; c++) {
+        const x = c * TILE;
+        const y = r * TILE;
+        sctx.drawImage(baseCanvas, 0, 0, TILE, TILE, x, y, TILE, TILE);
+        sctx.strokeStyle = '#000000';
+        sctx.lineWidth = 1;
+        sctx.strokeRect(x + 0.5, y + 0.5, TILE - 1, TILE - 1);
+      }
+    }
+
+    lastSheetDataUrl = sheetCanvas.toDataURL('image/png');
+    downloadBtn.disabled = false;
+  }
+
+  // Download
+  downloadBtn.addEventListener('click', () => {
+    if (!lastSheetDataUrl) return;
+    const a = document.createElement('a');
+    a.href = lastSheetDataUrl;
+    a.download = 'passport_sheet.png';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  });
+
+  // Step guide scroll highlighting
+  function updateStepGuide() {
+    const center = window.innerHeight / 2;
+
+    const r1 = step1Panel.getBoundingClientRect();
+    const r2 = step2Panel.getBoundingClientRect();
+
+    const d1 = Math.abs((r1.top + r1.height / 2) - center);
+    const d2 = Math.abs((r2.top + r2.height / 2) - center);
+
+    if (d1 <= d2) {
+      stepGuide1.classList.add('active');
+      stepGuide2.classList.remove('active');
+    } else {
+      stepGuide2.classList.add('active');
+      stepGuide1.classList.remove('active');
+    }
+  }
+
+  window.addEventListener('scroll', updateStepGuide);
+  window.addEventListener('resize', () => {
+    updateStepGuide();
+    draw(); // redraw guides with updated font size
+  });
+
+  stepGuide1.addEventListener('click', () => {
+    step1Panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  stepGuide2.addEventListener('click', () => {
+    step2Panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+
+  // Initial blank render + initial guide state
+  draw();
+  updateStepGuide();
+  setZoomDisplay();
+</script>
+
+</body>
+</html>
