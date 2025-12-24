@@ -519,6 +519,28 @@
       }
     }
 
+    .file-picker {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .file-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: var(--bg-card);
+      color: var(--text-main);
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+
     @keyframes floatUp {
       from {
         transform: translateY(12px);
@@ -540,13 +562,11 @@
       <h1>Free Passport Photo Tool</h1>
       <div style="margin-top:0.35rem; display:inline-flex; align-items:center; gap:0.4rem; font-size:0.8rem;">
         <span style="padding:0.15rem 0.55rem; border-radius:999px; border:1px solid rgba(37,99,235,0.3); color:#2563eb; background:rgba(219,234,254,0.6);">
-          2-step · 2-click process
+          2 steps, 2 clicks
         </span>
       </div>
       <p>
-        Create a printable 4x6 (or 8x10) sheet with six US-style 2×2 passport photos directly in your browser.
-        <strong>Your photo stays safely on your device</strong> — it is not sent to any server,
-        stored online, or used for any other purpose.
+        Make a printable 4x6 or 8x10 sheet with six US 2×2 photos. Everything stays on your device.
       </p>
     </div>
     <div class="header-actions">
@@ -568,10 +588,13 @@
         <div class="badge">Editor</div>
       </div>
 
-      <input id="fileInput" type="file" accept="image/*" />
+      <div class="file-picker">
+        <label class="file-button" for="fileInput">Click here to upload a photo</label>
+        <input id="fileInput" type="file" accept="image/*" style="display:none;" />
+      </div>
 
       <p class="hint" style="margin-top:0.75rem;">
-        Choose a photo with a white background using the button above, then use zoom &amp; positioning controls to align the top of your forehead and bottom of your chin to the markers. These guides will not appear on the final sheet.
+        Pick a photo on white, then zoom/position to fit forehead and chin between the guides. Guides don’t print.
       </p>
 
       <div style="margin-top:0.75rem;">
@@ -616,7 +639,7 @@
       </div>
 
       <div class="btn-row" style="margin-top:0.75rem;">
-        <button id="resetBtn" class="btn btn-secondary" type="button" disabled>⟳ Reset / Auto-fit</button>
+        <button id="resetBtn" class="btn btn-secondary" type="button" disabled>⟳ Reset</button>
       </div>
     </div>
 
@@ -640,27 +663,25 @@
       <canvas id="sheetCanvas" width="1800" height="1200" style="margin-top:0.75rem;"></canvas>
 
       <div class="btn-row" style="margin-top:0.5rem;">
-        <button id="clearBtn" class="btn btn-secondary" type="button">🧹 Clear photo from tool  (not required)</button>
+        <button id="clearBtn" class="btn btn-secondary" type="button">🧹 Clear photo</button>
       </div>
     </div>
   </div>
 
   <!-- Minimal How-to section -->
   <div class="howto">
-    <h2>How to use this free US passport photo tool</h2>
+    <h2>How to use</h2>
     <ol>
-      <li>Take a clear, high-resolution photo against a plain white background.</li>
-      <li>Upload the photo, then use zoom and positioning to align your forehead and chin with the guide bars.</li>
-      <li>Optionally clean the background to white; the 4x6 or 8x10 sheet updates automatically.</li>
-      <li>Download the PNG file and print it on 4x6 or 8x10 inch photo paper at 100% / actual size.</li>
+      <li>Use a clear photo on a white background.</li>
+      <li>Upload, then align forehead/chin with the guides.</li>
+      <li>(Optional) Clean background; download PNG and print at actual size.</li>
     </ol>
 
-    <h2>How to print the 4x6 or 8x10 passport photo sheet</h2>
+    <h2>How to print</h2>
     <ol>
-      <li>Select <strong>4x6 inch</strong> (or <strong>8x10 inch</strong>) paper size in your printer settings.</li>
-      <li>Turn off “Fit to page” or scaling and use <strong>Actual size</strong>.</li>
-      <li>Use photo paper and the highest quality print mode your printer supports.</li>
-      <li>Cut along the thin borders to get six 2×2 inch photos.</li>
+      <li>Choose <strong>4x6</strong> or <strong>8x10</strong> paper.</li>
+      <li>Turn off scaling (use <strong>Actual size</strong>).</li>
+      <li>Print on photo paper, then cut along the borders.</li>
     </ol>
   </div>
 
