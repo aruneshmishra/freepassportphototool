@@ -12,13 +12,13 @@
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
   <!-- Basic SEO -->
-  <meta name="description" content="Free passport photo tool to create a 6×4 sheet with six 2×2 US-style passport photos. Upload, align your face, and download a printable PNG. Your photo never leaves your device." />
-  <meta name="keywords" content="free passport photo tool, passport photo generator, US passport photo, 2x2 photo, 6x4 photo sheet, print passport photo at home, passport photo maker" />
+  <meta name="description" content="Free passport photo tool to create a 4x6 (or 8x10) sheet with six 2×2 US-style passport photos. Upload, align your face, and download a printable PNG. Your photo never leaves your device." />
+  <meta name="keywords" content="free passport photo tool, passport photo generator, US passport photo, 2x2 photo, 4x6 photo sheet, 8x10 photo sheet, print passport photo at home, passport photo maker" />
   <meta name="author" content="Arunesh Mishra" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Free Passport Photo Tool – Create US 2×2 Photos at Home" />
-  <meta property="og:description" content="Generate US-style 2×2 passport photos on a 6×4 sheet. No upload to server – everything stays in your browser." />
+  <meta property="og:description" content="Generate US-style 2×2 passport photos on a 4x6 or 8x10 sheet. No upload to server – everything stays in your browser." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://freepassportphototool.com" />
   <meta property="og:image" content="https://freepassportphototool.com/preview.png" />
@@ -26,7 +26,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Free Passport Photo Tool – Create US 2×2 Photos at Home" />
-  <meta name="twitter:description" content="Create and print US-style passport photos at home on a 6×4 sheet. Your photo never leaves your device." />
+  <meta name="twitter:description" content="Create and print US-style passport photos at home on a 4x6 or 8x10 sheet. Your photo never leaves your device." />
   <meta name="twitter:image" content="https://freepassportphototool.com/preview.png" />
 
   <!-- JSON-LD WebApplication schema -->
@@ -38,7 +38,7 @@
     "url": "https://freepassportphototool.com",
     "applicationCategory": "PhotoEditingApplication",
     "operatingSystem": "All",
-    "description": "Generate a 6×4 sheet with six 2×2 US-style passport photos directly in your browser. No upload or server storage.",
+    "description": "Generate a 4x6 or 8x10 sheet with six 2×2 US-style passport photos directly in your browser. No upload or server storage.",
     "creator": {
       "@type": "Person",
       "name": "Arunesh Mishra"
@@ -269,6 +269,28 @@
       color: #e5e7eb;
       border-color: #9ca3af;
       cursor: not-allowed;
+    }
+
+    .size-row {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+    }
+
+    .size-row .label {
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .size-row label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      cursor: pointer;
+      color: var(--text-main);
     }
 
     .zoom-row {
@@ -522,7 +544,7 @@
         </span>
       </div>
       <p>
-        Create a printable 6×4 sheet with six US-style 2×2 passport photos directly in your browser.
+        Create a printable 4x6 (or 8x10) sheet with six US-style 2×2 passport photos directly in your browser.
         <strong>Your photo stays safely on your device</strong> — it is not sent to any server,
         stored online, or used for any other purpose.
       </p>
@@ -601,8 +623,14 @@
     <!-- RIGHT: SHEET -->
     <div class="panel" id="step2">
       <div class="panel-header">
-        <div class="panel-title">Step 2: Download 6×4 Sheet to print</div>
+        <div class="panel-title">Step 2: Download sheet to print</div>
         <div class="badge">Output</div>
+      </div>
+
+      <div class="size-row" role="radiogroup" aria-label="Select output sheet size">
+        <span class="label">Size:</span>
+        <label><input type="radio" name="sheetSize" value="4x6" checked />4×6</label>
+        <label><input type="radio" name="sheetSize" value="8x10" />8×10</label>
       </div>
 
       <div class="btn-row">
@@ -623,13 +651,13 @@
     <ol>
       <li>Take a clear, high-resolution photo against a plain white background.</li>
       <li>Upload the photo, then use zoom and positioning to align your forehead and chin with the guide bars.</li>
-      <li>Optionally clean the background to white; the 6×4 sheet updates automatically.</li>
-      <li>Download the PNG file and print it on 6×4 inch photo paper at 100% / actual size.</li>
+      <li>Optionally clean the background to white; the 4x6 or 8x10 sheet updates automatically.</li>
+      <li>Download the PNG file and print it on 4x6 or 8x10 inch photo paper at 100% / actual size.</li>
     </ol>
 
-    <h2>How to print the 6×4 passport photo sheet</h2>
+    <h2>How to print the 4x6 or 8x10 passport photo sheet</h2>
     <ol>
-      <li>Select <strong>4×6 inch</strong> paper size in your printer settings.</li>
+      <li>Select <strong>4x6 inch</strong> (or <strong>8x10 inch</strong>) paper size in your printer settings.</li>
       <li>Turn off “Fit to page” or scaling and use <strong>Actual size</strong>.</li>
       <li>Use photo paper and the highest quality print mode your printer supports.</li>
       <li>Cut along the thin borders to get six 2×2 inch photos.</li>
@@ -657,7 +685,7 @@
     <div class="step-separator">›</div>
     <div class="step-item" id="stepGuide2">
       <span class="step-label">Step 2</span>
-      <span class="step-text">Download 6×4 Sheet</span>
+      <span class="step-text">Download 4x6/8x10 Sheet</span>
     </div>
   </div>
 
@@ -666,9 +694,14 @@
 <script>
   // Canvas + state
   const W = 600, H = 600;
-  const SHEET_W = 1800, SHEET_H = 1200;
   const TILE = 600;
   const BG_TOLER = 80;
+  const SIZE_PRESETS = {
+    '4x6': { width: 1800, height: 1200, filename: 'passport_sheet_4x6.png' },
+    '8x10': { width: 3000, height: 2400, filename: 'passport_sheet_8x10.png' }
+  };
+  let SHEET_W = SIZE_PRESETS['4x6'].width;
+  let SHEET_H = SIZE_PRESETS['4x6'].height;
 
   const fileInput = document.getElementById('fileInput');
   const previewCanvas = document.getElementById('previewCanvas');
@@ -696,6 +729,7 @@
   const stepGuide2 = document.getElementById('stepGuide2');
 
   const joystickButtons = document.querySelectorAll('.joy-btn');
+  const sheetSizeRadios = document.querySelectorAll('input[name="sheetSize"]');
 
   // Offscreen base canvas WITHOUT guides (used for sheet export)
   const baseCanvas = document.createElement('canvas');
@@ -711,6 +745,7 @@
   let dragging = false, lastX = 0, lastY = 0;
   let cleanBG = false, bgColor = null;
   let lastSheetDataUrl = null;
+  let currentSize = '4x6';
 
   // Pinch-zoom state
   let pinchActive = false;
@@ -742,6 +777,27 @@
   });
 
   applyThemeFromStorage();
+
+  function applySheetSize(size, skipDraw = false) {
+    const preset = SIZE_PRESETS[size] || SIZE_PRESETS['4x6'];
+    currentSize = (size in SIZE_PRESETS) ? size : '4x6';
+    SHEET_W = preset.width;
+    SHEET_H = preset.height;
+    sheetCanvas.width = SHEET_W;
+    sheetCanvas.height = SHEET_H;
+    lastSheetDataUrl = null;
+    downloadBtn.disabled = !loaded;
+    if (!skipDraw) draw();
+  }
+
+  sheetSizeRadios.forEach(radio => {
+    radio.addEventListener('change', () => {
+      if (!radio.checked) return;
+      applySheetSize(radio.value);
+    });
+  });
+
+  applySheetSize(currentSize, true);
 
   // File upload
   fileInput.addEventListener('change', e => {
@@ -1137,15 +1193,20 @@
     pctx.restore();
   }
 
-  // Build 6×4 sheet from base canvas
+  // Build sheet from base canvas
   function generateSheetFromBase() {
     sctx.fillStyle = '#ffffff';
     sctx.fillRect(0, 0, SHEET_W, SHEET_H);
 
-    for (let r = 0; r < 2; r++) {
-      for (let c = 0; c < 3; c++) {
-        const x = c * TILE;
-        const y = r * TILE;
+    const cols = Math.max(1, Math.floor(SHEET_W / TILE));
+    const rows = Math.max(1, Math.floor(SHEET_H / TILE));
+    const offsetX = (SHEET_W - cols * TILE) / 2;
+    const offsetY = (SHEET_H - rows * TILE) / 2;
+
+    for (let r = 0; r < rows; r++) {
+      for (let c = 0; c < cols; c++) {
+        const x = offsetX + c * TILE;
+        const y = offsetY + r * TILE;
         sctx.drawImage(baseCanvas, 0, 0, TILE, TILE, x, y, TILE, TILE);
         sctx.strokeStyle = '#000000';
         sctx.lineWidth = 1;
@@ -1160,9 +1221,10 @@
   // Download
   downloadBtn.addEventListener('click', () => {
     if (!lastSheetDataUrl) return;
+    const filename = SIZE_PRESETS[currentSize]?.filename || 'passport_sheet.png';
     const a = document.createElement('a');
     a.href = lastSheetDataUrl;
-    a.download = 'passport_sheet.png';
+    a.download = filename;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
