@@ -1498,6 +1498,24 @@
 
     updateStepGuide();
     setZoomDisplay();
+
+    // PROTECT CODE (Deterrents)
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    document.addEventListener('keydown', function (e) {
+      // F12 or Cmd+Opt+I (DevTools)
+      if (e.key === 'F12' || (e.metaKey && e.altKey && e.key === 'i')) {
+        e.preventDefault();
+      }
+      // Ctrl+U or Cmd+Shift+U (View Source)
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'u' || e.key === 'U')) {
+        e.preventDefault();
+      }
+      // Ctrl+S (Save)
+      if ((e.ctrlKey || e.metaKey) && (e.key === 's' || e.key === 'S')) {
+        e.preventDefault();
+      }
+    });
   </script>
 
 
