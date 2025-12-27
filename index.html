@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <title>Free Passport Photo Tool – Create US 2×2 Photos at Home</title>
+  <title>Free Passport Photo Tool – Create Passport Photos at Home</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- Canonical -->
@@ -12,21 +13,25 @@
   <link rel="icon" href="/favicon.ico" type="image/x-icon" />
 
   <!-- Basic SEO -->
-  <meta name="description" content="Free passport photo tool to create a 4x6 (or 8x10) sheet with six 2×2 US-style passport photos. Upload, align your face, and download a printable PNG. Your photo never leaves your device." />
-  <meta name="keywords" content="free passport photo tool, passport photo generator, US passport photo, 2x2 photo, 4x6 photo sheet, 8x10 photo sheet, print passport photo at home, passport photo maker" />
+  <meta name="description"
+    content="Free passport photo tool to create a 4x6 (or 8x10) sheet with passport photos. Support for US, India, UK, China, and Custom sizes. Upload, align, and download. Your photo never leaves your device." />
+  <meta name="keywords"
+    content="free passport photo tool, passport photo generator, US passport photo, 2x2 photo, 4x6 photo sheet, 8x10 photo sheet, print passport photo at home, passport photo maker" />
   <meta name="author" content="Arunesh Mishra" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Free Passport Photo Tool – Create US 2×2 Photos at Home" />
-  <meta property="og:description" content="Generate US-style 2×2 passport photos on a 4x6 or 8x10 sheet. No upload to server – everything stays in your browser." />
+  <meta property="og:title" content="Free Passport Photo Tool – Create Passport Photos at Home" />
+  <meta property="og:description"
+    content="Generate passport photos (US, UK, India, China, Custom) on a 4x6 or 8x10 sheet. No upload to server – everything stays in your browser." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://freepassportphototool.com" />
   <meta property="og:image" content="https://freepassportphototool.com/preview.png" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Free Passport Photo Tool – Create US 2×2 Photos at Home" />
-  <meta name="twitter:description" content="Create and print US-style passport photos at home on a 4x6 or 8x10 sheet. Your photo never leaves your device." />
+  <meta name="twitter:title" content="Free Passport Photo Tool – Create Passport Photos at Home" />
+  <meta name="twitter:description"
+    content="Create and print passport photos (US, UK, EU, Custom) at home on a 4x6 or 8x10 sheet. Your photo never leaves your device." />
   <meta name="twitter:image" content="https://freepassportphototool.com/preview.png" />
 
   <!-- JSON-LD WebApplication schema -->
@@ -38,7 +43,7 @@
     "url": "https://freepassportphototool.com",
     "applicationCategory": "PhotoEditingApplication",
     "operatingSystem": "All",
-    "description": "Generate a 4x6 or 8x10 sheet with six 2×2 US-style passport photos directly in your browser. No upload or server storage.",
+    "description": "Generate a 4x6 or 8x10 sheet with passport photos (US, EU, Custom) directly in your browser. No upload or server storage.",
     "creator": {
       "@type": "Person",
       "name": "Arunesh Mishra"
@@ -75,7 +80,7 @@
       --text-main: #e5e7eb;
       --text-muted: #9ca3af;
       --accent: #3b82f6;
-      --badge-bg: rgba(59,130,246,0.15);
+      --badge-bg: rgba(59, 130, 246, 0.15);
       --badge-text: #bfdbfe;
       --danger-bg: #451a03;
       --danger-border: #9a3412;
@@ -100,7 +105,7 @@
       max-width: 960px;
       padding: 1.25rem;
       border-radius: 1rem;
-      box-shadow: 0 10px 30px rgba(15,23,42,0.25);
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.25);
       position: relative;
       box-sizing: border-box;
     }
@@ -168,10 +173,12 @@
       .grid {
         grid-template-columns: 1fr;
       }
+
       .header {
         flex-direction: column;
         align-items: flex-start;
       }
+
       .header-actions {
         align-items: flex-start;
       }
@@ -345,6 +352,7 @@
       .zoom-desktop {
         display: none;
       }
+
       .zoom-mobile {
         display: inline-flex;
       }
@@ -354,6 +362,7 @@
       .zoom-mobile {
         display: none;
       }
+
       .zoom-desktop {
         display: flex;
       }
@@ -459,7 +468,7 @@
       bottom: 0.5rem;
       margin: 0 auto;
       max-width: 480px;
-      background: rgba(15,23,42,0.9);
+      background: rgba(15, 23, 42, 0.9);
       color: #e5e7eb;
       border-radius: 999px;
       padding: 0.4rem 0.9rem;
@@ -470,7 +479,7 @@
       font-size: 0.75rem;
       z-index: 40;
       backdrop-filter: blur(10px);
-      box-shadow: 0 10px 25px rgba(15,23,42,0.35);
+      box-shadow: 0 10px 25px rgba(15, 23, 42, 0.35);
       animation: floatUp 0.6s ease-out;
     }
 
@@ -546,6 +555,7 @@
         transform: translateY(12px);
         opacity: 0;
       }
+
       to {
         transform: translateY(0);
         opacity: 1;
@@ -553,742 +563,940 @@
     }
   </style>
 </head>
+
 <body>
-<div class="app">
+  <div class="app">
 
-  <!-- HEADER -->
-  <div class="header">
-    <div class="header-main">
-      <h1>Free Passport Photo Tool</h1>
-      <div style="margin-top:0.35rem; display:inline-flex; align-items:center; gap:0.4rem; font-size:0.8rem;">
-        <span style="padding:0.15rem 0.55rem; border-radius:999px; border:1px solid rgba(37,99,235,0.3); color:#2563eb; background:rgba(219,234,254,0.6);">
-          2 steps, 2 clicks
-        </span>
-      </div>
-      <p>
-        Make a printable 4x6 or 8x10 sheet with six US 2×2 photos. Everything stays on your device.
-      </p>
-    </div>
-    <div class="header-actions">
-      <button id="themeToggle" class="toggle-btn" type="button">
-        <span class="icon" id="themeIcon">🌙</span>
-        <span id="themeLabel">Dark mode</span>
-      </button>
-      <small style="font-size:0.75rem; color:var(--text-muted); text-align:right;">
-        Your photo will not be transferred to any server or saved anywhere online.
-      </small>
-    </div>
-  </div>
-
-  <div class="grid">
-    <!-- LEFT: EDITOR -->
-    <div class="panel" id="step1">
-      <div class="panel-header">
-        <div class="panel-title">Step 1: Upload &amp; Align</div>
-        <div class="badge">Editor</div>
-      </div>
-
-      <div class="file-picker">
-        <label class="file-button" for="fileInput">Click here to upload a photo</label>
-        <input id="fileInput" type="file" accept="image/*" style="display:none;" />
-      </div>
-
-      <p class="hint" style="margin-top:0.75rem;">
-        Pick a photo on white, then zoom/position to fit forehead and chin between the guides. Guides don’t print.
-      </p>
-
-      <div style="margin-top:0.75rem;">
-        <label style="font-size:0.85rem;">
-          <input type="checkbox" id="bgToggle" />
-          Clean background to white (for better results use a photo with a white background).
-        </label>
-      </div>
-
-      <!-- Zoom + joystick controls -->
-      <div class="zoom-row">
-        <span class="label">Zoom:</span>
-        <div class="zoom-desktop">
-          <input id="zoomRange" type="range" min="1" max="3" step="0.02" value="1" disabled />
+    <!-- HEADER -->
+    <div class="header">
+      <div class="header-main">
+        <h1>Free Passport Photo Tool</h1>
+        <div style="margin-top:0.35rem; display:inline-flex; align-items:center; gap:0.4rem; font-size:0.8rem;">
+          <span
+            style="padding:0.15rem 0.55rem; border-radius:999px; border:1px solid rgba(37,99,235,0.3); color:#2563eb; background:rgba(219,234,254,0.6);">
+            2 steps, 2 clicks
+          </span>
         </div>
-        <div class="zoom-mobile">
-          <button type="button" id="zoomOutBtn">−</button>
-          <span id="zoomDisplay">1.0×</span>
-          <button type="button" id="zoomInBtn">+</button>
+        <p>
+          Make a printable 4x6 or 8x10 sheet with passport photos. Everything stays on your device.
+        </p>
+      </div>
+      <div class="header-actions">
+        <button id="themeToggle" class="toggle-btn" type="button">
+          <span class="icon" id="themeIcon">🌙</span>
+          <span id="themeLabel">Dark mode</span>
+        </button>
+        <small style="font-size:0.75rem; color:var(--text-muted); text-align:right;">
+          Your photo will not be transferred to any server or saved anywhere online.
+        </small>
+      </div>
+    </div>
+
+    <div class="grid">
+
+      <!-- LEFT: EDITOR -->
+      <div class="panel" id="step1">
+        <div class="panel-header">
+          <div class="panel-title">Step 1: Upload &amp; Align</div>
+          <div class="badge">Editor</div>
+        </div>
+
+        <!-- Country Selector -->
+        <div style="margin-bottom: 0.75rem;">
+          <label for="countrySelect"
+            style="font-size:0.85rem; font-weight:600; color:var(--text-main); display:block; margin-bottom:0.35rem;">
+            Photo Type / Country:
+          </label>
+          <select id="countrySelect"
+            style="width:100%; padding:0.5rem; border-radius:0.5rem; border:1px solid var(--border-subtle); background:var(--bg-card); color:var(--text-main); font-size:0.9rem;">
+            <option value="us">USA / India (2x2 inch / 51x51 mm)</option>
+            <option value="uk">UK / EU / Australia (35x45 mm / 1.4x1.8 inch)</option>
+            <option value="china">China (33x48 mm / 1.3x1.9 inch)</option>
+            <option value="canada">Canada (50x70 mm / 2x2.8 inch)</option>
+            <option value="custom">Custom Size...</option>
+          </select>
+
+          <!-- Custom Inputs (Hidden by default) -->
+          <div id="customInputs"
+            style="display:none; margin-top:0.5rem; gap:0.5rem; align-items:center; flex-wrap:wrap;">
+            <div style="display:flex; flex-direction:column; gap:0.1rem;">
+              <label style="font-size:0.75rem; color:var(--text-muted);">Width</label>
+              <input type="number" id="customW" value="50" step="0.1" min="10" max="200"
+                style="padding:0.3rem; border-radius:0.3rem; border:1px solid var(--border-subtle); width:4rem;">
+            </div>
+            <div style="display:flex; flex-direction:column; gap:0.1rem;">
+              <label style="font-size:0.75rem; color:var(--text-muted);">Height</label>
+              <input type="number" id="customH" value="50" step="0.1" min="10" max="200"
+                style="padding:0.3rem; border-radius:0.3rem; border:1px solid var(--border-subtle); width:4rem;">
+            </div>
+            <div style="display:flex; flex-direction:column; gap:0.1rem;">
+              <label style="font-size:0.75rem; color:var(--text-muted);">Unit</label>
+              <select id="customUnit"
+                style="padding:0.3rem; border-radius:0.3rem; border:1px solid var(--border-subtle);">
+                <option value="mm">mm</option>
+                <option value="in">inch</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="file-picker">
+          <label class="file-button" for="fileInput">Click here to upload a photo</label>
+          <input id="fileInput" type="file" accept="image/*" style="display:none;" />
+        </div>
+
+        <p class="hint" style="margin-top:0.75rem;">
+          Pick a photo on white, then zoom/position to fit forehead and chin between the guides. Guides don’t print.
+        </p>
+
+        <div style="margin-top:0.75rem;">
+          <label style="font-size:0.85rem;">
+            <input type="checkbox" id="bgToggle" />
+            Clean background to white (for better results use a photo with a white background).
+          </label>
+        </div>
+
+        <!-- Zoom + joystick controls -->
+        <div class="zoom-row">
+          <span class="label">Zoom:</span>
+          <div class="zoom-desktop">
+            <input id="zoomRange" type="range" min="1" max="3" step="0.02" value="1" disabled />
+          </div>
+          <div class="zoom-mobile">
+            <button type="button" id="zoomOutBtn">−</button>
+            <span id="zoomDisplay">1.0×</span>
+            <button type="button" id="zoomInBtn">+</button>
+          </div>
+        </div>
+
+        <div class="position-row">
+          <span class="label">Position:</span>
+          <div class="joystick" aria-label="Nudge image">
+            <button class="empty" disabled></button>
+            <button type="button" class="joy-btn" data-dx="0" data-dy="-10">▲</button>
+            <button class="empty" disabled></button>
+
+            <button type="button" class="joy-btn" data-dx="-10" data-dy="0">◀</button>
+            <button class="empty" disabled></button>
+            <button type="button" class="joy-btn" data-dx="10" data-dy="0">▶</button>
+
+            <button class="empty" disabled></button>
+            <button type="button" class="joy-btn" data-dx="0" data-dy="10">▼</button>
+            <button class="empty" disabled></button>
+          </div>
+        </div>
+
+        <div style="margin-top:0.75rem; display:flex; justify-content:center;">
+          <canvas id="previewCanvas" width="600" height="600"></canvas>
+        </div>
+
+        <div class="btn-row" style="margin-top:0.75rem;">
+          <button id="resetBtn" class="btn btn-secondary" type="button" disabled>⟳ Reset</button>
         </div>
       </div>
 
-      <div class="position-row">
-        <span class="label">Position:</span>
-        <div class="joystick" aria-label="Nudge image">
-          <button class="empty" disabled></button>
-          <button type="button" class="joy-btn" data-dx="0" data-dy="-10">▲</button>
-          <button class="empty" disabled></button>
+      <!-- RIGHT: SHEET -->
+      <div class="panel" id="step2">
+        <div class="panel-header">
+          <div class="panel-title">Step 2: Download sheet to print</div>
+          <div class="badge">Output</div>
+        </div>
 
-          <button type="button" class="joy-btn" data-dx="-10" data-dy="0">◀</button>
-          <button class="empty" disabled></button>
-          <button type="button" class="joy-btn" data-dx="10" data-dy="0">▶</button>
+        <div class="size-row" role="radiogroup" aria-label="Select output sheet size">
+          <span class="label">Sheet Size:</span>
+          <label><input type="radio" name="sheetSize" value="4x6" checked />4×6"</label>
+          <label><input type="radio" name="sheetSize" value="8x10" />8×10"</label>
+        </div>
 
-          <button class="empty" disabled></button>
-          <button type="button" class="joy-btn" data-dx="0" data-dy="10">▼</button>
-          <button class="empty" disabled></button>
+        <div class="btn-row">
+          <button id="downloadBtn" class="btn btn-secondary" type="button" disabled>⬇️ Download PNG</button>
+        </div>
+
+        <!-- Share / Success Message -->
+        <div id="shareSection"
+          style="display:none; margin-top:1rem; padding:0.8rem; background:var(--badge-bg); border-radius:0.5rem; text-align:center;">
+          <p style="margin:0 0 0.5rem 0; font-weight:600; color:var(--text-main); font-size:0.9rem;">
+            🎉 You just saved ~$17!
+          </p>
+          <p style="margin:0 0 0.8rem 0; font-size:0.8rem; color:var(--text-muted);">
+            Pharmacies charge $16.99. Help friends save too:
+          </p>
+          <button id="shareBtn" class="btn btn-primary" style="font-size:0.85rem;">
+            🔗 Share Tool
+          </button>
+
+          <p style="margin:0.8rem 0 0 0; font-size:0.75rem; color:var(--text-muted);">
+            If this tool helps you, consider <a href="https://www.buymeacoffee.com/helpingfriend" target="_blank"
+              rel="noopener noreferrer" style="color:var(--accent); text-decoration:none;">supporting the creator</a>.
+          </p>
+        </div>
+
+        <canvas id="sheetCanvas" width="1800" height="1200" style="margin-top:0.75rem; margin-bottom: 2rem;"></canvas>
+
+        <div class="btn-row" style="margin-top:0.5rem;">
+          <button id="clearBtn" class="btn btn-secondary" type="button">🧹 Clear photo</button>
         </div>
       </div>
+    </div>
 
-      <div style="margin-top:0.75rem; display:flex; justify-content:center;">
-        <canvas id="previewCanvas" width="600" height="600"></canvas>
+    <!-- Minimal How-to section -->
+    <div class="howto">
+      <h2>How to use</h2>
+      <ol>
+        <li>Select your country / photo type.</li>
+        <li>Upload and align so your head fills the box.</li>
+        <li>Download and print on 4x6 or 8x10 photo paper.</li>
+      </ol>
+
+      <h2>How to print</h2>
+      <ol>
+        <li>Choose <strong>4x6</strong> or <strong>8x10</strong> paper.</li>
+        <li>Turn off scaling (use <strong>Actual size</strong>).</li>
+        <li>Print on photo paper, then cut along the borders.</li>
+      </ol>
+    </div>
+
+
+
+    <div class="donate">
+      If this tool helps you, consider <a href="https://www.buymeacoffee.com/helpingfriend" target="_blank"
+        rel="noopener noreferrer">supporting the creator</a>.
+    </div>
+
+    <div class="disclaimer">
+      <strong>Disclaimer:</strong> This tool is a personal utility created with the best effort to approximate
+      passport photo guidelines, but there is <strong>no guarantee of accuracy, compliance, or acceptance</strong>
+      by any government agency. Use this tool entirely at your own risk. For official purposes, it is strongly
+      recommended
+      to have your passport photo taken by a professional photographer or an authorized passport photo service.
+      The creator makes <strong>no claims, recommendations, warranties, or assurances</strong> regarding fitness for
+      any official or legal use.
+    </div>
+
+    <div class="step-guide">
+      <div class="step-item active" id="stepGuide1">
+        <span class="step-label">Step 1</span>
+        <span class="step-text">Upload &amp; Align</span>
       </div>
-
-      <div class="btn-row" style="margin-top:0.75rem;">
-        <button id="resetBtn" class="btn btn-secondary" type="button" disabled>⟳ Reset</button>
+      <div class="step-separator">›</div>
+      <div class="step-item" id="stepGuide2">
+        <span class="step-label">Step 2</span>
+        <span class="step-text">Download Sheet</span>
       </div>
     </div>
 
-    <!-- RIGHT: SHEET -->
-    <div class="panel" id="step2">
-      <div class="panel-header">
-        <div class="panel-title">Step 2: Download sheet to print</div>
-        <div class="badge">Output</div>
-      </div>
-
-      <div class="size-row" role="radiogroup" aria-label="Select output sheet size">
-        <span class="label">Size:</span>
-        <label><input type="radio" name="sheetSize" value="4x6" checked />4×6</label>
-        <label><input type="radio" name="sheetSize" value="8x10" />8×10</label>
-      </div>
-
-      <div class="btn-row">
-        <button id="downloadBtn" class="btn btn-secondary" type="button" disabled>⬇️ Download PNG</button>
-      </div>
-
-      <canvas id="sheetCanvas" width="1800" height="1200" style="margin-top:0.75rem;"></canvas>
-
-      <div class="btn-row" style="margin-top:0.5rem;">
-        <button id="clearBtn" class="btn btn-secondary" type="button">🧹 Clear photo</button>
-      </div>
-    </div>
   </div>
 
-  <!-- Minimal How-to section -->
-  <div class="howto">
-    <h2>How to use</h2>
-    <ol>
-      <li>Use a clear photo on a white background.</li>
-      <li>Upload, then align forehead/chin with the guides.</li>
-      <li>(Optional) Clean background; download PNG and print at actual size.</li>
-    </ol>
+  <script>
+    // Constants
+    const DPI = 300;
+    const MM_TO_PX = DPI / 25.4; // ~11.81 px per mm
 
-    <h2>How to print</h2>
-    <ol>
-      <li>Choose <strong>4x6</strong> or <strong>8x10</strong> paper.</li>
-      <li>Turn off scaling (use <strong>Actual size</strong>).</li>
-      <li>Print on photo paper, then cut along the borders.</li>
-    </ol>
-  </div>
-
-  <div class="donate">
-    If this tool helps you, consider <a href="https://www.buymeacoffee.com/helpingfriend" target="_blank" rel="noopener noreferrer">supporting the creator</a>.
-  </div>
-
-  <div class="disclaimer">
-    <strong>Disclaimer:</strong> This tool is a personal utility created with the best effort to approximate
-    U.S. passport photo guidelines, but there is <strong>no guarantee of accuracy, compliance, or acceptance</strong>
-    by any government agency. Use this tool entirely at your own risk. For official purposes, it is strongly recommended
-    to have your passport photo taken by a professional photographer or an authorized passport photo service.
-    The creator makes <strong>no claims, recommendations, warranties, or assurances</strong> regarding fitness for
-    any official or legal use.
-  </div>
-
-  <div class="step-guide">
-    <div class="step-item active" id="stepGuide1">
-      <span class="step-label">Step 1</span>
-      <span class="step-text">Upload &amp; Align</span>
-    </div>
-    <div class="step-separator">›</div>
-    <div class="step-item" id="stepGuide2">
-      <span class="step-label">Step 2</span>
-      <span class="step-text">Download 4x6/8x10 Sheet</span>
-    </div>
-  </div>
-
-</div>
-
-<script>
-  // Canvas + state
-  const W = 600, H = 600;
-  const TILE = 600;
-  const BG_TOLER = 80;
-  const SIZE_PRESETS = {
-    '4x6': { width: 1800, height: 1200, filename: 'passport_sheet_4x6.png' },
-    '8x10': { width: 3000, height: 2400, filename: 'passport_sheet_8x10.png' }
-  };
-  let SHEET_W = SIZE_PRESETS['4x6'].width;
-  let SHEET_H = SIZE_PRESETS['4x6'].height;
-
-  const fileInput = document.getElementById('fileInput');
-  const previewCanvas = document.getElementById('previewCanvas');
-  const pctx = previewCanvas.getContext('2d');
-  const sheetCanvas = document.getElementById('sheetCanvas');
-  const sctx = sheetCanvas.getContext('2d');
-
-  const zoomRange = document.getElementById('zoomRange');
-  const zoomOutBtn = document.getElementById('zoomOutBtn');
-  const zoomInBtn = document.getElementById('zoomInBtn');
-  const zoomDisplay = document.getElementById('zoomDisplay');
-
-  const bgToggle = document.getElementById('bgToggle');
-  const downloadBtn = document.getElementById('downloadBtn');
-  const resetBtn = document.getElementById('resetBtn');
-  const clearBtn = document.getElementById('clearBtn');
-
-  const themeToggle = document.getElementById('themeToggle');
-  const themeIcon = document.getElementById('themeIcon');
-  const themeLabel = document.getElementById('themeLabel');
-
-  const step1Panel = document.getElementById('step1');
-  const step2Panel = document.getElementById('step2');
-  const stepGuide1 = document.getElementById('stepGuide1');
-  const stepGuide2 = document.getElementById('stepGuide2');
-
-  const joystickButtons = document.querySelectorAll('.joy-btn');
-  const sheetSizeRadios = document.querySelectorAll('input[name="sheetSize"]');
-
-  // Offscreen base canvas WITHOUT guides (used for sheet export)
-  const baseCanvas = document.createElement('canvas');
-  baseCanvas.width = W;
-  baseCanvas.height = H;
-  const bctx = baseCanvas.getContext('2d');
-
-  let img = new Image();
-  let loaded = false;
-  let scale = 1;
-  let minScale = 1;
-  let offX = 0, offY = 0;
-  let dragging = false, lastX = 0, lastY = 0;
-  let cleanBG = false, bgColor = null;
-  let lastSheetDataUrl = null;
-  let currentSize = '4x6';
-
-  // Pinch-zoom state
-  let pinchActive = false;
-  let pinchStartDist = 0;
-  let pinchStartScale = 1;
-  let pinchCenterX = 0;
-  let pinchCenterY = 0;
-  let offXAtPinch = 0;
-  let offYAtPinch = 0;
-
-  // Theme handling
-  function applyThemeFromStorage() {
-    const saved = localStorage.getItem('pps-theme');
-    if (saved === 'dark') {
-      document.body.classList.add('dark');
-      themeIcon.textContent = '☀️';
-      themeLabel.textContent = 'Light mode';
-    } else {
-      document.body.classList.remove('dark');
-      themeIcon.textContent = '🌙';
-      themeLabel.textContent = 'Dark mode';
-    }
-  }
-
-  themeToggle.addEventListener('click', () => {
-    const isDark = document.body.classList.toggle('dark');
-    localStorage.setItem('pps-theme', isDark ? 'dark' : 'light');
-    applyThemeFromStorage();
-  });
-
-  applyThemeFromStorage();
-
-  function applySheetSize(size, skipDraw = false) {
-    const preset = SIZE_PRESETS[size] || SIZE_PRESETS['4x6'];
-    currentSize = (size in SIZE_PRESETS) ? size : '4x6';
-    SHEET_W = preset.width;
-    SHEET_H = preset.height;
-    sheetCanvas.width = SHEET_W;
-    sheetCanvas.height = SHEET_H;
-    lastSheetDataUrl = null;
-    downloadBtn.disabled = !loaded;
-    if (!skipDraw) draw();
-  }
-
-  sheetSizeRadios.forEach(radio => {
-    radio.addEventListener('change', () => {
-      if (!radio.checked) return;
-      applySheetSize(radio.value);
-    });
-  });
-
-  applySheetSize(currentSize, true);
-
-  // File upload
-  fileInput.addEventListener('change', e => {
-    const f = e.target.files[0];
-    if (!f) return;
-    const r = new FileReader();
-    r.onload = ev => {
-      img = new Image();
-      img.onload = () => {
-        loaded = true;
-        autoFitImage();
-        bgColor = null;
-        cleanBG = bgToggle.checked;
-        resetBtn.disabled = false;
-        setZoomDisplay();
-        draw(true);
-      };
-      img.src = ev.target.result;
+    // Country Defs
+    const PRESETS = {
+      'us': { w_mm: 50.8, h_mm: 50.8, head_pct: 0.65, label: 'US / India' }, // 2x2 inch exactly
+      // 'india':  { w_mm: 51, h_mm: 51, head_pct: 0.65, label: 'India' }, // Clubbed with US
+      'uk': { w_mm: 35, h_mm: 45, head_pct: 0.75, label: 'UK/EU' },
+      'china': { w_mm: 33, h_mm: 48, head_pct: 0.72, label: 'China' },
+      'canada': { w_mm: 50, h_mm: 70, head_pct: 0.60, label: 'Canada' }
     };
-    r.readAsDataURL(f);
-  });
 
-  // Auto-fit: fit image inside preview and center it
-  function autoFitImage() {
-    if (!loaded) return;
-    minScale = Math.min(1, W / img.width, H / img.height);
-    scale = minScale; // start by fitting the image within the preview
-    zoomRange.min = minScale;
-    zoomRange.max = 3;
-    zoomRange.step = 0.02;
-    zoomRange.value = scale;
-    zoomRange.disabled = false;
+    // Default
+    let currentCountry = 'us';
+    let tileW_px = 600; // default US (2 inch * 300)
+    let tileH_px = 600;
+
+    // The Preview Canvas is purely for UI display.
+    // We'll set a fixed size for the preview canvas container, 
+    // but we should technically change aspect ratio if we want it perfect.
+    // However, simplest is to keep 600x600 and draw the "crop box" inside it.
+    const W = 600, H = 600;
+    const BG_TOLER = 80;
+
+    const SHEET_SIZES = {
+      '4x6': { w_px: 1800, h_px: 1200, name: '4x6' },
+      '8x10': { w_px: 3000, h_px: 2400, name: '8x10' }
+    };
+    let currentSheetSize = SHEET_SIZES['4x6'];
+
+    // DOM
+    const countrySelect = document.getElementById('countrySelect');
+    const fileInput = document.getElementById('fileInput');
+    const previewCanvas = document.getElementById('previewCanvas');
+    const pctx = previewCanvas.getContext('2d');
+    const sheetCanvas = document.getElementById('sheetCanvas');
+    const sctx = sheetCanvas.getContext('2d');
+
+    const zoomRange = document.getElementById('zoomRange');
+    const zoomOutBtn = document.getElementById('zoomOutBtn');
+    const zoomInBtn = document.getElementById('zoomInBtn');
+    const zoomDisplay = document.getElementById('zoomDisplay');
+
+    const bgToggle = document.getElementById('bgToggle');
+    const downloadBtn = document.getElementById('downloadBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const clearBtn = document.getElementById('clearBtn');
+
+    const themeToggle = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeLabel = document.getElementById('themeLabel');
+
+    const step1Panel = document.getElementById('step1');
+    const step2Panel = document.getElementById('step2');
+    const stepGuide1 = document.getElementById('stepGuide1');
+    const stepGuide2 = document.getElementById('stepGuide2');
+
+    const joystickButtons = document.querySelectorAll('.joy-btn');
+    const sheetSizeRadios = document.querySelectorAll('input[name="sheetSize"]');
+
+    // Offscreen base canvas (holds the original loaded image)
+    // We'll treat this as "source" space.
+    const baseCanvas = document.createElement('canvas');
+    baseCanvas.width = W;
+    baseCanvas.height = H;
+    const bctx = baseCanvas.getContext('2d');
+
+    let img = new Image();
+    let loaded = false;
+    let scale = 1;
+    let minScale = 1;
+    let offX = 0, offY = 0;
+    let dragging = false, lastX = 0, lastY = 0;
+    let cleanBG = false, bgColor = null;
+    let lastSheetDataUrl = null;
+
+    // Pinch-zoom state
+    let pinchActive = false;
+    let pinchStartDist = 0;
+    let pinchStartScale = 1;
+    let pinchCenterX = 0;
+    let pinchCenterY = 0;
+    let offXAtPinch = 0;
+    let offYAtPinch = 0;
+
+    // DOM
+    // const countrySelect = document.getElementById('countrySelect'); // Already declared logic below
+    const customInputs = document.getElementById('customInputs');
+    const customW = document.getElementById('customW');
+    const customH = document.getElementById('customH');
+    const customUnit = document.getElementById('customUnit');
+
+    // Initialize Country
+    function updateCountryParams() {
+      let p = PRESETS[currentCountry];
+
+      // CUSTOM LOGIC
+      if (currentCountry === 'custom') {
+        customInputs.style.display = 'flex';
+        // Read Inputs
+        const wVal = parseFloat(customW.value) || 50;
+        const hVal = parseFloat(customH.value) || 50;
+        const unit = customUnit.value;
+
+        let w_mm = wVal;
+        let h_mm = hVal;
+
+        if (unit === 'in') {
+          w_mm = wVal * 25.4;
+          h_mm = hVal * 25.4;
+        }
+
+        p = {
+          w_mm: w_mm,
+          h_mm: h_mm,
+          head_pct: 0.65,
+          label: 'Custom'
+        };
+        PRESETS['custom'] = p;
+
+      } else {
+        customInputs.style.display = 'none';
+      }
+
+      if (!p) return;
+
+      // Calculate pixel size at 300 DPI
+      tileW_px = Math.round(p.w_mm * MM_TO_PX);
+      tileH_px = Math.round(p.h_mm * MM_TO_PX);
+
+      draw();
+    }
+
+    countrySelect.addEventListener('change', (e) => {
+      currentCountry = e.target.value;
+      updateCountryParams();
+    });
+
+    // Custom Input Listeners
+    [customW, customH, customUnit].forEach(el => {
+      el.addEventListener('input', updateCountryParams);
+      el.addEventListener('change', updateCountryParams);
+    });
+
+    // Theme
+    function applyThemeFromStorage() {
+      const saved = localStorage.getItem('pps-theme');
+      if (saved === 'dark') {
+        document.body.classList.add('dark');
+        themeIcon.textContent = '☀️';
+        themeLabel.textContent = 'Light mode';
+      } else {
+        document.body.classList.remove('dark');
+        themeIcon.textContent = '🌙';
+        themeLabel.textContent = 'Dark mode';
+      }
+    }
+
+    themeToggle.addEventListener('click', () => {
+      const isDark = document.body.classList.toggle('dark');
+      localStorage.setItem('pps-theme', isDark ? 'dark' : 'light');
+      applyThemeFromStorage();
+    });
+    applyThemeFromStorage();
+
+    // Sheet Size Logic
+    function applySheetSize(sizeStr) {
+      currentSheetSize = SHEET_SIZES[sizeStr] || SHEET_SIZES['4x6'];
+      sheetCanvas.width = currentSheetSize.w_px;
+      sheetCanvas.height = currentSheetSize.h_px;
+
+      downloadBtn.disabled = !loaded;
+      if (loaded) draw();
+    }
+
+    sheetSizeRadios.forEach(radio => {
+      radio.addEventListener('change', () => {
+        if (!radio.checked) return;
+        applySheetSize(radio.value);
+      });
+    });
+
+    // Init
+    updateCountryParams(); // set initial pixel sizes
+    applySheetSize('4x6');
+
+    // File upload
+    fileInput.addEventListener('change', e => {
+      const f = e.target.files[0];
+      if (!f) return;
+      const r = new FileReader();
+      r.onload = ev => {
+        img = new Image();
+        img.onload = () => {
+          loaded = true;
+          autoFitImage();
+          bgColor = null;
+          cleanBG = bgToggle.checked;
+          resetBtn.disabled = false;
+          setZoomDisplay();
+          draw(true);
+        };
+        img.src = ev.target.result;
+      };
+      r.readAsDataURL(f);
+    });
+
+    // Auto-fit
+    function autoFitImage() {
+      if (!loaded) return;
+      // We want to fit the image into the Preview Canvas initially
+      minScale = Math.min(1, W / img.width, H / img.height);
+      scale = minScale;
+      zoomRange.min = minScale;
+      zoomRange.max = 3;
+      zoomRange.step = 0.02;
+      zoomRange.value = scale;
+      zoomRange.disabled = false;
+      if (zoomOutBtn && zoomInBtn) {
+        zoomOutBtn.disabled = false;
+        zoomInBtn.disabled = false;
+      }
+
+      const iw = img.width * scale;
+      const ih = img.height * scale;
+      offX = (W - iw) / 2;
+      offY = (H - ih) / 2;
+    }
+
+    function setZoomDisplay() {
+      if (!zoomDisplay) return;
+      zoomDisplay.textContent = scale.toFixed(2).replace(/\.00$/, '') + '×';
+    }
+
+    // --- Zoom/Pan Logic (Same, simplified) ---
+    function applyZoom(newScale, centerX = W / 2, centerY = H / 2, startScale = scale, startOffX = offX, startOffY = offY) {
+      if (!loaded) return;
+      newScale = Math.min(3, Math.max(minScale, newScale));
+
+      const worldX = (centerX - startOffX) / startScale;
+      const worldY = (centerY - startOffY) / startScale;
+
+      scale = newScale;
+      zoomRange.value = scale;
+      setZoomDisplay();
+
+      offX = centerX - worldX * scale;
+      offY = centerY - worldY * scale;
+      draw();
+    }
+
+    zoomRange.addEventListener('input', () => applyZoom(parseFloat(zoomRange.value)));
+
     if (zoomOutBtn && zoomInBtn) {
-      zoomOutBtn.disabled = false;
-      zoomInBtn.disabled = false;
+      zoomOutBtn.addEventListener('click', () => { if (loaded) applyZoom(scale - 0.08); });
+      zoomInBtn.addEventListener('click', () => { if (loaded) applyZoom(scale + 0.08); });
     }
 
-    const iw = img.width * scale;
-    const ih = img.height * scale;
-
-    // center image in canvas
-    offX = (W - iw) / 2;
-    offY = (H - ih) / 2;
-  }
-
-  function setZoomDisplay() {
-    if (!zoomDisplay) return;
-    zoomDisplay.textContent = scale.toFixed(2).replace(/\.00$/, '') + '×';
-  }
-
-  // Helpers for touch/canvas mapping
-  function getCanvasPointFromClient(clientX, clientY) {
-    const rect = previewCanvas.getBoundingClientRect();
-    const x = (clientX - rect.left) * (W / rect.width);
-    const y = (clientY - rect.top) * (H / rect.height);
-    return { x, y };
-  }
-
-  function getCanvasCoords(evt) {
-    const rect = previewCanvas.getBoundingClientRect();
-    let clientX, clientY;
-    if (evt.touches && evt.touches.length) {
-      clientX = evt.touches[0].clientX;
-      clientY = evt.touches[0].clientY;
-    } else {
-      clientX = evt.clientX;
-      clientY = evt.clientY;
+    // Mouse drag
+    function getCanvasCoords(e) {
+      const rect = previewCanvas.getBoundingClientRect();
+      let cx = e.clientX, cy = e.clientY;
+      if (e.touches && e.touches.length) { cx = e.touches[0].clientX; cy = e.touches[0].clientY; }
+      return {
+        x: (cx - rect.left) * (W / rect.width),
+        y: (cy - rect.top) * (H / rect.height)
+      };
     }
-    const x = (clientX - rect.left) * (W / rect.width);
-    const y = (clientY - rect.top) * (H / rect.height);
-    return { x, y };
-  }
 
-  function applyZoom(newScale, centerX = W / 2, centerY = H / 2, fromScale = scale, fromOffX = offX, fromOffY = offY) {
-    if (!loaded) return;
-    newScale = Math.min(3, Math.max(minScale, newScale)); // clamp between minScale–3
-
-    // World coords of the zoom center before zoom
-    const px = (centerX - fromOffX) / fromScale;
-    const py = (centerY - fromOffY) / fromScale;
-
-    scale = newScale;
-    zoomRange.value = scale;
-    setZoomDisplay();
-
-    // Reposition so that the same point stays under the same screen position
-    offX = centerX - px * scale;
-    offY = centerY - py * scale;
-
-    draw();
-  }
-
-  // Zoom slider
-  zoomRange.addEventListener('input', () => {
-    if (!loaded) return;
-    const ns = parseFloat(zoomRange.value);
-    applyZoom(ns);
-  });
-
-  // Zoom buttons (mobile)
-  if (zoomOutBtn && zoomInBtn) {
-    zoomOutBtn.addEventListener('click', () => {
+    previewCanvas.addEventListener('mousedown', e => {
       if (!loaded) return;
-      const current = parseFloat(zoomRange.value || scale);
-      applyZoom(current - 0.08);
-    });
-    zoomInBtn.addEventListener('click', () => {
-      if (!loaded) return;
-      const current = parseFloat(zoomRange.value || scale);
-      applyZoom(current + 0.08);
-    });
-  }
-
-  // Mouse drag
-  previewCanvas.addEventListener('mousedown', e => {
-    if (!loaded) return;
-    const pos = getCanvasCoords(e);
-    dragging = true;
-    lastX = pos.x;
-    lastY = pos.y;
-    previewCanvas.classList.add('dragging');
-  });
-
-  previewCanvas.addEventListener('mousemove', e => {
-    if (!dragging) return;
-    const pos = getCanvasCoords(e);
-    offX += pos.x - lastX;
-    offY += pos.y - lastY;
-    lastX = pos.x;
-    lastY = pos.y;
-    draw();
-  });
-
-  previewCanvas.addEventListener('mouseup', () => {
-    dragging = false;
-    previewCanvas.classList.remove('dragging');
-  });
-
-  previewCanvas.addEventListener('mouseleave', () => {
-    dragging = false;
-    previewCanvas.classList.remove('dragging');
-  });
-
-  // Touch: drag + pinch-zoom
-  previewCanvas.addEventListener('touchstart', e => {
-    if (!loaded) return;
-    e.preventDefault();
-
-    if (e.touches.length === 2) {
-      // Start pinch
-      pinchActive = true;
-      dragging = false;
-      previewCanvas.classList.remove('dragging');
-
-      const t1 = e.touches[0];
-      const t2 = e.touches[1];
-      const dx = t2.clientX - t1.clientX;
-      const dy = t2.clientY - t1.clientY;
-      pinchStartDist = Math.sqrt(dx * dx + dy * dy) || 1;
-      pinchStartScale = scale;
-
-      // Pinch center in canvas coords
-      const cxClient = (t1.clientX + t2.clientX) / 2;
-      const cyClient = (t1.clientY + t2.clientY) / 2;
-      const p = getCanvasPointFromClient(cxClient, cyClient);
-      pinchCenterX = p.x;
-      pinchCenterY = p.y;
-
-      offXAtPinch = offX;
-      offYAtPinch = offY;
-    } else if (e.touches.length === 1) {
-      // Single-finger drag
-      pinchActive = false;
-      const pos = getCanvasCoords(e);
       dragging = true;
-      lastX = pos.x;
-      lastY = pos.y;
+      const p = getCanvasCoords(e);
+      lastX = p.x; lastY = p.y;
       previewCanvas.classList.add('dragging');
-    }
-  }, { passive: false });
-
-  previewCanvas.addEventListener('touchmove', e => {
-    if (!loaded) return;
-    e.preventDefault();
-
-    if (pinchActive && e.touches.length === 2) {
-      // Pinch zoom
-      const t1 = e.touches[0];
-      const t2 = e.touches[1];
-      const dx = t2.clientX - t1.clientX;
-      const dy = t2.clientY - t1.clientY;
-      const dist = Math.sqrt(dx * dx + dy * dy) || 1;
-      const factor = dist / pinchStartDist;
-      const newScale = pinchStartScale * factor;
-      applyZoom(newScale, pinchCenterX, pinchCenterY, pinchStartScale, offXAtPinch, offYAtPinch);
-    } else if (!pinchActive && e.touches.length === 1 && dragging) {
-      // Single-finger drag
-      const pos = getCanvasCoords(e);
-      offX += pos.x - lastX;
-      offY += pos.y - lastY;
-      lastX = pos.x;
-      lastY = pos.y;
-      draw();
-    }
-  }, { passive: false });
-
-  previewCanvas.addEventListener('touchend', e => {
-    if (e.touches.length < 2) {
-      pinchActive = false;
-    }
-    if (e.touches.length === 0) {
-      dragging = false;
-      previewCanvas.classList.remove('dragging');
-    }
-  });
-
-  // Joystick nudge
-  joystickButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (!loaded) return;
-      const dx = parseFloat(btn.dataset.dx || '0');
-      const dy = parseFloat(btn.dataset.dy || '0');
-      offX += dx;
-      offY += dy;
+    });
+    window.addEventListener('mousemove', e => { // window for smoother drag out
+      if (!dragging) return;
+      // We need coords relative to canvas though:
+      // simpler to keep listener on canvas or handle bounds
+    });
+    previewCanvas.addEventListener('mousemove', e => {
+      if (!dragging) return;
+      const p = getCanvasCoords(e);
+      offX += p.x - lastX;
+      offY += p.y - lastY;
+      lastX = p.x; lastY = p.y;
       draw();
     });
-  });
+    window.addEventListener('mouseup', () => { dragging = false; previewCanvas.classList.remove('dragging'); });
 
-  // Reset
-  resetBtn.addEventListener('click', () => {
-    if (!loaded) return;
-    autoFitImage();
-    setZoomDisplay();
-    draw(true);
-  });
-
-  // Background toggle
-  bgToggle.addEventListener('change', () => {
-    cleanBG = bgToggle.checked;
-    bgColor = null;
-    draw(true);
-  });
-
-  // Clear photo from tool
-  clearBtn.addEventListener('click', () => {
-    img = new Image();
-    loaded = false;
-    scale = 1;
-    minScale = 1;
-    offX = 0;
-    offY = 0;
-    cleanBG = false;
-    bgColor = null;
-    lastSheetDataUrl = null;
-    bgToggle.checked = false;
-    fileInput.value = '';
-    zoomRange.value = 1;
-    zoomRange.min = 1;
-    zoomRange.disabled = true;
-    resetBtn.disabled = true;
-    downloadBtn.disabled = true;
-    if (zoomOutBtn && zoomInBtn) {
-      zoomOutBtn.disabled = true;
-      zoomInBtn.disabled = true;
-    }
-    setZoomDisplay();
-
-    // Clear canvases
-    bctx.clearRect(0, 0, W, H);
-    pctx.clearRect(0, 0, W, H);
-    sctx.clearRect(0, 0, SHEET_W, SHEET_H);
-
-    draw();
-  });
-
-  // Core draw: into baseCanvas, then preview, then auto-generate sheet
-  function draw(recalcBG = false) {
-    // Base canvas
-    bctx.clearRect(0, 0, W, H);
-    bctx.fillStyle = '#ffffff';
-    bctx.fillRect(0, 0, W, H);
-
-    if (loaded) {
-      let iw = img.width * scale;
-      let ih = img.height * scale;
-
-      if (iw <= W) {
-        offX = (W - iw) / 2;
+    // Touch
+    previewCanvas.addEventListener('touchstart', e => {
+      if (!loaded) return;
+      e.preventDefault();
+      if (e.touches.length === 2) {
+        pinchActive = true; dragging = false;
+        const t1 = e.touches[0], t2 = e.touches[1];
+        const dx = t2.clientX - t1.clientX, dy = t2.clientY - t1.clientY;
+        pinchStartDist = Math.sqrt(dx * dx + dy * dy) || 1;
+        pinchStartScale = scale;
+        const cx = (t1.clientX + t2.clientX) / 2, cy = (t1.clientY + t2.clientY) / 2;
+        const rect = previewCanvas.getBoundingClientRect();
+        pinchCenterX = (cx - rect.left) * (W / rect.width);
+        pinchCenterY = (cy - rect.top) * (H / rect.height);
+        offXAtPinch = offX; offYAtPinch = offY;
       } else {
-        offX = Math.min(0, Math.max(offX, W - iw));
+        pinchActive = false; dragging = true;
+        const p = getCanvasCoords(e);
+        lastX = p.x; lastY = p.y;
       }
+    }, { passive: false });
 
-      if (ih <= H) {
-        offY = (H - ih) / 2;
+    previewCanvas.addEventListener('touchmove', e => {
+      if (!loaded) return;
+      e.preventDefault();
+      if (pinchActive && e.touches.length === 2) {
+        const t1 = e.touches[0], t2 = e.touches[1];
+        const dx = t2.clientX - t1.clientX, dy = t2.clientY - t1.clientY;
+        const dist = Math.sqrt(dx * dx + dy * dy) || 1;
+        applyZoom(pinchStartScale * (dist / pinchStartDist), pinchCenterX, pinchCenterY, pinchStartScale, offXAtPinch, offYAtPinch);
+      } else if (dragging) {
+        const p = getCanvasCoords(e);
+        offX += p.x - lastX; offY += p.y - lastY;
+        lastX = p.x; lastY = p.y;
+        draw();
+      }
+    }, { passive: false });
+
+    previewCanvas.addEventListener('touchend', () => { pinchActive = false; dragging = false; });
+
+    // Joystick
+    joystickButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        if (!loaded) return;
+        offX += parseFloat(btn.dataset.dx || 0);
+        offY += parseFloat(btn.dataset.dy || 0);
+        draw();
+      });
+    });
+
+    resetBtn.addEventListener('click', () => { if (loaded) { autoFitImage(); draw(true); } });
+
+    bgToggle.addEventListener('change', () => {
+      cleanBG = bgToggle.checked;
+      bgColor = null;
+      draw(true);
+    });
+
+    clearBtn.addEventListener('click', () => {
+      img = new Image(); loaded = false;
+      scale = 1; offX = 0; offY = 0;
+      cleanBG = false; bgColor = null; lastSheetDataUrl = null;
+      bgToggle.checked = false; fileInput.value = '';
+      zoomRange.value = 1; zoomRange.disabled = true;
+      resetBtn.disabled = true; downloadBtn.disabled = true;
+      if (zoomOutBtn) { zoomOutBtn.disabled = true; zoomInBtn.disabled = true; }
+      setZoomDisplay();
+      bctx.clearRect(0, 0, W, H);
+      pctx.clearRect(0, 0, W, H);
+      sctx.clearRect(0, 0, sheetCanvas.width, sheetCanvas.height);
+      draw();
+    });
+
+    // --- DRAWING ---
+    function draw(recalcBG = false) {
+      if (loaded) {
+        // 1. Draw source img to offscreen base (white BG first)
+        bctx.fillStyle = '#ffffff';
+        bctx.fillRect(0, 0, W, H);
+
+        const iw = img.width * scale;
+        const ih = img.height * scale;
+        // Clamp logic if we want to force user to keep image in view? 
+        // Current logic: allow free move.
+        bctx.drawImage(img, offX, offY, iw, ih);
+
+        if (cleanBG) {
+          if (recalcBG || !bgColor) estimateBG();
+          whitenBG();
+        }
       } else {
-        offY = Math.min(0, Math.max(offY, H - ih));
+        bctx.fillStyle = '#ffffff';
+        bctx.fillRect(0, 0, W, H);
       }
 
-      bctx.drawImage(img, offX, offY, iw, ih);
+      // 2. Draw base to Preview
+      pctx.clearRect(0, 0, W, H);
+      pctx.drawImage(baseCanvas, 0, 0);
 
-      if (cleanBG) {
-        if (recalcBG || !bgColor) estimateBG();
-        whitenBG();
-      }
-    }
+      // 3. Draw Guides (based on currentCountry)
+      drawGuides();
 
-    // Show base on preview and draw guides
-    pctx.clearRect(0, 0, W, H);
-    pctx.drawImage(baseCanvas, 0, 0);
-    drawGuides();
-
-    // Auto-generate sheet if loaded, else clear
-    if (loaded) {
-      generateSheetFromBase();
-    } else {
-      sctx.clearRect(0, 0, SHEET_W, SHEET_H);
-      downloadBtn.disabled = true;
-      lastSheetDataUrl = null;
-    }
-  }
-
-  // Estimate background from top band
-  function estimateBG() {
-    const id = bctx.getImageData(0, 0, W, H);
-    const d = id.data;
-    const top = H * 0.2;
-    let rs = 0, gs = 0, bs = 0, c = 0;
-    for (let y = 0; y < top; y++) {
-      for (let x = 0; x < W; x++) {
-        const i = (y * W + x) * 4;
-        const r = d[i], g = d[i + 1], b = d[i + 2];
-        if ((r + g + b) / 3 < 120) continue;
-        rs += r; gs += g; bs += b; c++;
-      }
-    }
-    if (c > 0) bgColor = { r: rs / c, g: gs / c, b: bs / c };
-    else bgColor = null;
-  }
-
-  function whitenBG() {
-    if (!bgColor) return;
-    const id = bctx.getImageData(0, 0, W, H);
-    const d = id.data;
-    for (let i = 0; i < d.length; i += 4) {
-      const r = d[i], g = d[i + 1], b = d[i + 2];
-      const diff = Math.abs(r - bgColor.r) + Math.abs(g - bgColor.g) + Math.abs(b - bgColor.b);
-      if (diff < BG_TOLER) {
-        d[i] = d[i + 1] = d[i + 2] = 255;
-      }
-    }
-    bctx.putImageData(id, 0, 0);
-  }
-
-  // Guides only in preview
-  function drawGuides() {
-    const cx = W / 2;
-    const cy = H / 2;
-
-    const boxWidth = 260;
-    const boxHeight = 22;
-
-    const foreheadTop = cy - 220;
-    const foreheadLeft = cx - boxWidth / 2;
-
-    const chinTop = cy + 130;
-    const chinLeft = foreheadLeft;
-
-    pctx.save();
-    pctx.strokeStyle = 'rgba(37,99,235,0.98)';
-    pctx.lineWidth = 2.2;
-    pctx.setLineDash([6, 4]);
-
-    pctx.strokeRect(foreheadLeft, foreheadTop, boxWidth, boxHeight);
-    pctx.strokeRect(chinLeft, chinTop, boxWidth, boxHeight);
-
-    pctx.setLineDash([]);
-
-    pctx.fillStyle = 'rgba(37,99,235,0.98)';
-    const labelFontSize = (window.innerWidth && window.innerWidth < 480) ? 14 : 12;
-    pctx.font = labelFontSize + "px system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif";
-    pctx.fillText("Align top of forehead", foreheadLeft + 4, foreheadTop - 6);
-    pctx.fillText("Align bottom of your chin", chinLeft + 4, chinTop + boxHeight + 16);
-
-    const plusSize = 32;
-    pctx.lineWidth = 2.4;
-    pctx.beginPath();
-    pctx.moveTo(cx - plusSize, cy);
-    pctx.lineTo(cx + plusSize, cy);
-    pctx.moveTo(cx, cy - plusSize);
-    pctx.lineTo(cx, cy + plusSize);
-    pctx.stroke();
-
-    pctx.restore();
-  }
-
-  // Build sheet from base canvas
-  function generateSheetFromBase() {
-    sctx.fillStyle = '#ffffff';
-    sctx.fillRect(0, 0, SHEET_W, SHEET_H);
-
-    const cols = Math.max(1, Math.floor(SHEET_W / TILE));
-    const rows = Math.max(1, Math.floor(SHEET_H / TILE));
-    const offsetX = (SHEET_W - cols * TILE) / 2;
-    const offsetY = (SHEET_H - rows * TILE) / 2;
-
-    for (let r = 0; r < rows; r++) {
-      for (let c = 0; c < cols; c++) {
-        const x = offsetX + c * TILE;
-        const y = offsetY + r * TILE;
-        sctx.drawImage(baseCanvas, 0, 0, TILE, TILE, x, y, TILE, TILE);
-        sctx.strokeStyle = '#000000';
-        sctx.lineWidth = 1;
-        sctx.strokeRect(x + 0.5, y + 0.5, TILE - 1, TILE - 1);
+      // 4. Generate Sheet
+      if (loaded) generateSheetFromBase();
+      else {
+        sctx.fillStyle = '#fff';
+        sctx.fillRect(0, 0, sheetCanvas.width, sheetCanvas.height);
+        downloadBtn.disabled = true;
       }
     }
 
-    lastSheetDataUrl = sheetCanvas.toDataURL('image/png');
-    downloadBtn.disabled = false;
-  }
+    function drawGuides() {
+      const p = PRESETS[currentCountry];
+      // In preview (W x H = 600x600), we need to represent the crop area.
+      // The "Photo" is the area that will be cropped.
+      // However, our tool currently works by "What you see in the 600x600 box IS the photo".
+      // Wait, the previous logic assumed 600x600 px IS the 2x2 inch photo.
+      // If we select a rectangular photo (e.g. UK 35x45), we should mask out the sides
+      // so the user knows they are creating a rectangular photo.
 
-  // Download
-  downloadBtn.addEventListener('click', () => {
-    if (!lastSheetDataUrl) return;
-    const filename = SIZE_PRESETS[currentSize]?.filename || 'passport_sheet.png';
-    const a = document.createElement('a');
-    a.href = lastSheetDataUrl;
-    a.download = filename;
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  });
+      // Calculate aspect ratio
+      const aspect = tileW_px / tileH_px;
 
-  // Step guide scroll highlighting
-  function updateStepGuide() {
-    const center = window.innerHeight / 2;
+      // We want to fit the crop box into our 600x600 preview canvas, keeping it centered.
+      // Let's define a "max preview box" taking up e.g. 500x500 space
+      const maxDim = 540;
 
-    const r1 = step1Panel.getBoundingClientRect();
-    const r2 = step2Panel.getBoundingClientRect();
+      let boxW, boxH;
+      if (aspect > 1) { // Wide (rare)
+        boxW = maxDim;
+        boxH = maxDim / aspect;
+      } else { // Tall
+        boxH = maxDim;
+        boxW = maxDim * aspect;
+      }
 
-    const d1 = Math.abs((r1.top + r1.height / 2) - center);
-    const d2 = Math.abs((r2.top + r2.height / 2) - center);
+      const cx = W / 2;
+      const cy = H / 2;
+      const boxL = cx - boxW / 2;
+      const boxT = cy - boxH / 2;
 
-    if (d1 <= d2) {
-      stepGuide1.classList.add('active');
-      stepGuide2.classList.remove('active');
-    } else {
-      stepGuide2.classList.add('active');
-      stepGuide1.classList.remove('active');
+      // Overlay outside the box to dim it
+      pctx.save();
+      pctx.fillStyle = 'rgba(255,255,255,0.7)';
+      pctx.beginPath();
+      pctx.rect(0, 0, W, H); // everything
+      pctx.rect(boxL, boxT, boxW, boxH); // subtract box (winding rule?)
+      // Easier: draw 4 rectangles
+      // Top
+      pctx.fillRect(0, 0, W, boxT);
+      // Bottom
+      pctx.fillRect(0, boxT + boxH, W, H - (boxT + boxH));
+      // Left
+      pctx.fillRect(0, boxT, boxL, boxH);
+      // Right
+      pctx.fillRect(boxL + boxW, boxT, W - (boxL + boxW), boxH);
+
+      // Draw Box Border
+      pctx.strokeStyle = '#2563eb';
+      pctx.lineWidth = 2;
+      pctx.setLineDash([6, 4]);
+      pctx.strokeRect(boxL, boxT, boxW, boxH);
+
+      // Biometric Lines
+      // Chin to Top of Hair should be ~70-80% usually
+      // Eyes line approx 40-50% from bottom?
+      // Let's us simple "Head" oval or just top/bottom chin lines
+      const headH = boxH * p.head_pct;
+      // Center the head-height vertical area in the box
+      const headTop = cy - headH / 2;
+      const chinBot = cy + headH / 2;
+
+      pctx.strokeStyle = 'rgba(37,99,235,0.6)';
+      pctx.lineWidth = 1.5;
+      pctx.beginPath();
+      // Top Line
+      pctx.moveTo(boxL + 20, headTop);
+      pctx.lineTo(boxL + boxW - 20, headTop);
+      // Bottom Line
+      pctx.moveTo(boxL + 20, chinBot);
+      pctx.lineTo(boxL + boxW - 20, chinBot);
+      pctx.stroke();
+
+      pctx.fillStyle = '#2563eb';
+      pctx.font = "12px sans-serif";
+      pctx.fillText("Top of Head", boxL + 25, headTop - 5);
+      pctx.fillText("Chin", boxL + 25, chinBot + 15);
+
+      // Center Cross
+      pctx.beginPath();
+      pctx.moveTo(cx - 10, cy); pctx.lineTo(cx + 10, cy);
+      pctx.moveTo(cx, cy - 10); pctx.lineTo(cx, cy + 10);
+      pctx.stroke();
+
+      pctx.restore();
+
+      // We also need to store the crop-box info so we can grab the right pixels for the sheet!
+      // We'll attach it to the canvas object or global vars
+      window.cropRect = { x: boxL, y: boxT, w: boxW, h: boxH };
     }
-  }
 
-  window.addEventListener('scroll', updateStepGuide);
-  window.addEventListener('resize', () => {
+    function generateSheetFromBase() {
+      if (!window.cropRect) return;
+
+      // Create a temp canvas for the Single Photo at High Res (300 DPI target size)
+      const singleC = document.createElement('canvas');
+      singleC.width = tileW_px;
+      singleC.height = tileH_px;
+      const ctx = singleC.getContext('2d');
+
+      // Draw from baseCanvas (which is 600x600)
+      ctx.drawImage(baseCanvas,
+        window.cropRect.x, window.cropRect.y, window.cropRect.w, window.cropRect.h,
+        0, 0, tileW_px, tileH_px
+      );
+
+      // Draw Border / Cut Lines on the single photo (internal stroke)
+      // Because we might tile with 0 gap, drawing lines *inside* the photo helps.
+      ctx.strokeStyle = 'rgba(150,150,150,0.5)';
+      ctx.lineWidth = 2; // 1px inside
+      ctx.strokeRect(0, 0, tileW_px, tileH_px);
+
+      // Optimize Orientation: Landscape or Portrait?
+      // Current defined size
+      const sW = currentSheetSize.w_px;
+      const sH = currentSheetSize.h_px;
+
+      // We want to verify which orientation gives more photos.
+      // Try Orientation A (Default defined)
+      const countA = calcMaxPhotos(sW, sH, tileW_px, tileH_px);
+
+      // Try Orientation B (Rotated)
+      const countB = calcMaxPhotos(sH, sW, tileW_px, tileH_px);
+
+      let finalW = sW;
+      let finalH = sH;
+      let finalCols = countA.cols;
+      let finalRows = countA.rows;
+      let finalGap = countA.gap;
+
+      // If Rotated fits MORE, switch.
+      if (countB.total > countA.total) {
+        finalW = sH;
+        finalH = sW;
+        finalCols = countB.cols;
+        finalRows = countB.rows;
+        finalGap = countB.gap;
+      }
+
+      // Update canvas size to match the winner orientation
+      sheetCanvas.width = finalW;
+      sheetCanvas.height = finalH;
+
+      // Fill white
+      sctx.fillStyle = '#ffffff';
+      sctx.fillRect(0, 0, finalW, finalH);
+
+      // Draw
+      const totalContentW = finalCols * tileW_px + (finalCols - 1) * finalGap;
+      const totalContentH = finalRows * tileH_px + (finalRows - 1) * finalGap;
+
+      const startX = (finalW - totalContentW) / 2;
+      const startY = (finalH - totalContentH) / 2;
+
+      for (let r = 0; r < finalRows; r++) {
+        for (let c = 0; c < finalCols; c++) {
+          const x = startX + c * (tileW_px + finalGap);
+          const y = startY + r * (tileH_px + finalGap);
+          sctx.drawImage(singleC, x, y);
+        }
+      }
+
+      lastSheetDataUrl = sheetCanvas.toDataURL('image/png');
+      downloadBtn.disabled = false;
+    }
+
+    // Helper to calculate how many fit
+    function calcMaxPhotos(sheetW, sheetH, itemW, itemH) {
+      // Try with a comfortable gap first
+      let gap = 20;
+      let cols = Math.floor(sheetW / (itemW + gap));
+      // Fix edge case logic for gap: (cols * w) + (cols-1)*gap <= sheet
+      // simpler: available = sheet + gap; per_item = w + gap.
+      // count = floor( (sheet + gap) / (w + gap) ) -- mostly works
+
+      // Let's iterate gap choices: 20, 10, 2, 0.
+      // We prefer larger gap but Priority #1 is COUNT.
+      const gaps = [20, 10, 2, 0];
+      let best = { total: 0, cols: 0, rows: 0, gap: 0 };
+
+      for (let g of gaps) {
+        // Horizontal
+        // W * c + g * (c-1) <= SW
+        // W*c + g*c - g <= SW
+        // c(W+g) <= SW + g
+        // c <= (SW+g)/(W+g)
+        const c = Math.floor((sheetW + g) / (itemW + g));
+        const r = Math.floor((sheetH + g) / (itemH + g));
+
+        // Safety check if calc was loose
+        if ((c * itemW + (c - 1) * g) > sheetW) continue;
+        if ((r * itemH + (r - 1) * g) > sheetH) continue;
+
+        const total = c * r;
+        if (total > best.total) { // strictly better count
+          best = { total, cols: c, rows: r, gap: g };
+        }
+      }
+      return best;
+    }
+
+    // Download handler
+    downloadBtn.addEventListener('click', () => {
+      if (!lastSheetDataUrl) return;
+      const countryLabel = PRESETS[currentCountry].label.replace(/[^a-z0-9]/gi, '_');
+      const filename = `passport_${countryLabel}_${currentSheetSize.name}.png`;
+      const a = document.createElement('a');
+      a.href = lastSheetDataUrl;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+
+      // SHOW SHARE
+      document.getElementById('shareSection').style.display = 'block';
+      step2Panel.scrollIntoView({ behavior: 'smooth', block: 'end' });
+    });
+
+    // Share Handler
+    let isSharing = false;
+    document.getElementById('shareBtn').addEventListener('click', async () => {
+      if (isSharing) return;
+      isSharing = true;
+
+      const shareData = {
+        title: 'Free Passport Photo Tool',
+        text: 'I just saved ~$17 making my passport photos for free!',
+        url: window.location.href
+      };
+
+      try {
+        // Attempt native share if supported
+        if (navigator.share) {
+          await navigator.share(shareData);
+        } else {
+          throw new Error('Web Share API not supported');
+        }
+      } catch (err) {
+        // Fallback to Clipboard (if share failed or not supported)
+        // Note: navigator.share might throw AbortError if user cancels, 
+        // but we can offer clipboard as backup or just ignore specific errors.
+        console.log('Share failed or canceled, falling back to clipboard:', err);
+
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          const btn = document.getElementById('shareBtn');
+          const old = btn.textContent;
+          btn.textContent = '✅ Copied Link!';
+          setTimeout(() => btn.textContent = old, 2000);
+        } catch (clipErr) {
+          console.error('Clipboard failed:', clipErr);
+        }
+      } finally {
+        isSharing = false;
+      }
+    });
+
+    // BG Algo (Same)
+    function estimateBG() {
+      const id = bctx.getImageData(0, 0, W, H);
+      const d = id.data;
+      const top = H * 0.2;
+      let rs = 0, gs = 0, bs = 0, c = 0;
+      for (let y = 0; y < top; y++) {
+        for (let x = 0; x < W; x++) {
+          const i = (y * W + x) * 4;
+          if ((d[i] + d[i + 1] + d[i + 2]) / 3 < 120) continue;
+          rs += d[i]; gs += d[i + 1]; bs += d[i + 2]; c++;
+        }
+      }
+      if (c > 0) bgColor = { r: rs / c, g: gs / c, b: bs / c };
+    }
+
+    function whitenBG() {
+      if (!bgColor) return;
+      const id = bctx.getImageData(0, 0, W, H);
+      const d = id.data;
+      for (let i = 0; i < d.length; i += 4) {
+        const diff = Math.abs(d[i] - bgColor.r) + Math.abs(d[i + 1] - bgColor.g) + Math.abs(d[i + 2] - bgColor.b);
+        if (diff < BG_TOLER) { d[i] = 255; d[i + 1] = 255; d[i + 2] = 255; }
+      }
+      bctx.putImageData(id, 0, 0);
+    }
+
+    // Scroll spy (same)
+    function updateStepGuide() {
+      const center = window.innerHeight / 2;
+      const r1 = step1Panel.getBoundingClientRect();
+      const r2 = step2Panel.getBoundingClientRect();
+      const d1 = Math.abs((r1.top + r1.height / 2) - center);
+      const d2 = Math.abs((r2.top + r2.height / 2) - center);
+      if (d1 <= d2) {
+        stepGuide1.classList.add('active'); stepGuide2.classList.remove('active');
+      } else {
+        stepGuide2.classList.add('active'); stepGuide1.classList.remove('active');
+      }
+    }
+    window.addEventListener('scroll', updateStepGuide);
+    window.addEventListener('resize', () => { updateStepGuide(); draw(); });
+    stepGuide1.addEventListener('click', () => step1Panel.scrollIntoView({ behavior: 'smooth' }));
+    stepGuide2.addEventListener('click', () => step2Panel.scrollIntoView({ behavior: 'smooth' }));
+
     updateStepGuide();
-    draw(); // redraw guides with updated font size
-  });
+    setZoomDisplay();
+  </script>
 
-  stepGuide1.addEventListener('click', () => {
-    step1Panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-
-  stepGuide2.addEventListener('click', () => {
-    step2Panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  });
-
-  // Initial blank render + initial guide state
-  draw();
-  updateStepGuide();
-  setZoomDisplay();
-</script>
 
 </body>
+
 </html>
